@@ -1,0 +1,489 @@
+/* =========================================================
+   CANDIDATE CARDS  (src/CandidateCards.css)  -  bluish colorful card
+========================================================= */
+
+.tc-grid {
+    --tc-g: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    --tc-sf: #ffffff;
+    --tc-tx: #1b1630;
+    --tc-mu: #5f6f93;
+    --tc-bd: rgba(124, 140, 245, 0.25);
+    --tc-glass: rgba(255, 255, 255, 0.74);
+
+    /* 3 colourful card backgrounds (blue + pink + orange mix) */
+    --tc-card-1:
+        radial-gradient(320px 200px at 100% 0%, rgba(56, 189, 248, 0.45), transparent 70%),
+        radial-gradient(300px 200px at 0% 100%, rgba(244, 114, 182, 0.3), transparent 70%),
+        radial-gradient(240px 160px at 0% 0%, rgba(251, 191, 36, 0.22), transparent 70%),
+        #f7faff;
+    --tc-card-2:
+        radial-gradient(320px 200px at 100% 0%, rgba(251, 146, 60, 0.38), transparent 70%),
+        radial-gradient(300px 200px at 0% 100%, rgba(99, 102, 241, 0.28), transparent 70%),
+        radial-gradient(240px 160px at 0% 0%, rgba(56, 189, 248, 0.2), transparent 70%),
+        #fffaf6;
+    --tc-card-3:
+        radial-gradient(320px 200px at 100% 0%, rgba(236, 72, 153, 0.32), transparent 70%),
+        radial-gradient(300px 200px at 0% 100%, rgba(56, 189, 248, 0.3), transparent 70%),
+        radial-gradient(240px 160px at 0% 0%, rgba(139, 92, 246, 0.2), transparent 70%),
+        #fcf8ff;
+
+    /* 1 row = 1 card */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+
+    /* cards ke peeche ka blue panel */
+    padding: 22px;
+    border-radius: 32px;
+    border: 1px solid rgba(100, 145, 255, 0.4);
+    background:
+        radial-gradient(circle at 92% 0%, rgba(73, 119, 255, 0.34), transparent 32%),
+        radial-gradient(circle at 4% 100%, rgba(236, 72, 153, 0.2), transparent 34%),
+        linear-gradient(135deg, #101f55 0%, #162d78 50%, #173a8b 100%);
+    box-shadow: 0 25px 60px rgba(18, 42, 100, 0.25);
+}
+
+/* list khaali ho to blue panel na dikhe */
+.tc-grid:empty {
+    display: none;
+}
+
+.tc-grid * {
+    box-sizing: border-box;
+}
+
+/* ---------- Card ---------- */
+
+.tc-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--tc-card-1);
+    color: var(--tc-tx);
+    border: 1px solid #cfe1fb;
+    border-radius: 28px;
+    padding: 22px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 28px rgba(59, 130, 246, 0.16);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* 3 colours me rotate: blue-pink, orange-blue, pink-cyan */
+.tc-card:nth-child(3n + 2) {
+    background: var(--tc-card-2);
+}
+
+.tc-card:nth-child(3n) {
+    background: var(--tc-card-3);
+}
+
+.tc-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(59, 130, 246, 0.26);
+}
+
+.tc-card.saved::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 5px;
+    background: var(--tc-g);
+}
+
+.tc-glow {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.22;
+    pointer-events: none;
+}
+
+/* ---------- Top row ---------- */
+
+.tc-top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tc-ring {
+    flex: none;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    padding: 3px;
+    background: var(--tc-g);
+}
+
+.tc-ring i {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    color: #fff;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    border: 2px solid var(--tc-sf);
+}
+
+.tc-nm {
+    min-width: 0;
+    flex: 1;
+}
+
+.tc-nm b {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 17px;
+}
+
+.tc-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tc-ver {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #3b82f6;
+    color: #fff;
+    font-size: 10px;
+    display: grid;
+    place-items: center;
+}
+
+.tc-sub {
+    display: block;
+    color: var(--tc-mu);
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tc-act {
+    display: flex;
+    gap: 8px;
+    flex: none;
+}
+
+.tc-ib {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--tc-bd);
+    background: var(--tc-glass);
+    color: var(--tc-mu);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    padding: 0;
+    transition: 0.15s;
+}
+
+.tc-ib:hover {
+    color: #d62976;
+    border-color: #d62976;
+}
+
+.tc-ib.on {
+    background: var(--tc-g);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 6px 14px rgba(214, 41, 118, 0.35);
+}
+
+/* ---------- Role ---------- */
+
+.tc-role {
+    margin: 18px 0 2px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tc-match {
+    background: rgba(18, 184, 111, 0.14);
+    color: #0c9a5a;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0;
+    border-radius: 999px;
+    padding: 4px 10px;
+}
+
+.tc-at,
+.tc-about {
+    margin: 0;
+    color: var(--tc-mu);
+    font-size: 14px;
+}
+
+.tc-at b {
+    color: var(--tc-tx);
+    font-weight: 600;
+}
+
+.tc-about {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ---------- Info tiles ---------- */
+
+.tc-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin: 16px 0;
+}
+
+.tc-it {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    background: var(--tc-glass);
+    border: 1px solid rgba(124, 140, 245, 0.22);
+    border-radius: 16px;
+    padding: 10px 12px;
+}
+
+.tc-tile {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+}
+
+.tc-it>div {
+    min-width: 0;
+}
+
+.tc-it small {
+    display: block;
+    color: var(--tc-mu);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.tc-it b {
+    display: block;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ---------- Skills ---------- */
+
+.tc-sk {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.tc-t {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    background: var(--tc-glass);
+    border: 1px solid var(--tc-bd);
+    border-radius: 10px;
+}
+
+.tc-t::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--c);
+}
+
+.tc-t.more {
+    border-style: dashed;
+    color: var(--tc-mu);
+}
+
+.tc-t.more::before {
+    display: none;
+}
+
+/* ---------- Bottom row ---------- */
+
+.tc-bot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--tc-bd);
+}
+
+.tc-card>.tc-sk+.tc-bot,
+.tc-card>.tc-info+.tc-bot,
+.tc-card>.tc-bot {
+    margin-top: 18px;
+}
+
+.tc-sb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 0;
+    background: transparent;
+    color: var(--tc-mu);
+    height: 38px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.15s;
+}
+
+.tc-sb:hover {
+    background: rgba(214, 41, 118, 0.08);
+    color: #d62976;
+}
+
+.tc-sb.liked {
+    background: rgba(214, 41, 118, 0.12);
+    color: #d62976;
+}
+
+.tc-ct {
+    color: #0c9a5a;
+}
+
+.tc-ct:hover {
+    background: rgba(18, 184, 111, 0.12);
+    color: #0c9a5a;
+}
+
+.tc-vp {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 0;
+    border-radius: 999px;
+    padding: 11px 18px;
+    background: linear-gradient(90deg, #3b82f6, #7c5cf0);
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 8px 18px rgba(79, 91, 213, 0.32);
+    transition: 0.15s;
+}
+
+.tc-vp:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(79, 91, 213, 0.42);
+}
+
+/* =========================================================
+   DARK MODE (app adds "candidate-dark" on <body>)
+========================================================= */
+
+body.candidate-dark .tc-grid {
+    --tc-sf: #17122a;
+    --tc-tx: #f5f3ff;
+    --tc-mu: #a9b4d6;
+    --tc-bd: rgba(255, 255, 255, 0.14);
+    --tc-glass: rgba(255, 255, 255, 0.07);
+    --tc-card-1:
+        radial-gradient(320px 200px at 100% 0%, rgba(56, 189, 248, 0.26), transparent 70%),
+        radial-gradient(300px 200px at 0% 100%, rgba(244, 114, 182, 0.2), transparent 70%),
+        #141a33;
+    --tc-card-2:
+        radial-gradient(320px 200px at 100% 0%, rgba(251, 146, 60, 0.24), transparent 70%),
+        radial-gradient(300px 200px at 0% 100%, rgba(99, 102, 241, 0.28), transparent 70%),
+        #141a33;
+    --tc-card-3:
+        radial-gradient(320px 200px at 100% 0%, rgba(236, 72, 153, 0.24), transparent 70%),
+        radial-gradient(300px 200px at 0% 100%, rgba(56, 189, 248, 0.22), transparent 70%),
+        #141a33;
+}
+
+body.candidate-dark .tc-card {
+    border-color: rgba(125, 160, 255, 0.22);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
+body.candidate-dark .tc-it {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 520px) {
+    .tc-grid {
+        padding: 12px;
+        border-radius: 24px;
+    }
+
+    .tc-card {
+        padding: 18px;
+        border-radius: 22px;
+    }
+
+    .tc-role {
+        font-size: 19px;
+    }
+
+    .tc-vp {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+}
+
+.tc-sb.tc-call {
+    color: #3b82f6;
+}
+
+.tc-t.more {
+    border: none !important;
+    outline: none !important;
+    background: transparent;
+    box-shadow: none;
+}
+
+.tc-card button:focus,
+.tc-card button:focus-visible,
+.tc-card a:focus,
+.tc-card a:focus-visible {
+    outline: none;
+}

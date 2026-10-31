@@ -1,0 +1,261 @@
+/* =========================================================
+   LOCATION PICKER + MAP  (blue / pink theme)
+========================================================= */
+
+.lp {
+    --lp-bd: #dfe5f6;
+    color: #1b1630;
+    font-family: inherit;
+}
+
+.lp * {
+    box-sizing: border-box;
+}
+
+.lp-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 46px;
+    padding: 0 12px;
+    border-radius: 14px;
+    border: 1px solid var(--lp-bd);
+    background: #fff;
+    color: #8a93b0;
+    transition: 0.15s;
+}
+
+.lp-box:focus-within {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.14);
+}
+
+.lp-box input,
+.cp-edit-box .lp-box input {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: 0;
+    font: inherit;
+    font-size: 14px;
+    color: #1b1630;
+}
+
+.lp-box input::placeholder {
+    color: #94a0bd;
+}
+
+.lp-clear {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    border: 0;
+    border-radius: 50%;
+    background: #eef1fb;
+    color: #5b6788;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.lp-clear:hover {
+    background: #e1e6f6;
+}
+
+.lp-spin {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #d6dcf2;
+    border-top-color: #6366f1;
+    animation: lp-rot 0.7s linear infinite;
+}
+
+@keyframes lp-rot {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---------- suggestions ---------- */
+
+.lp-list {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 6px;
+    border-radius: 16px;
+    border: 1px solid var(--lp-bd);
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(79, 70, 229, 0.12);
+}
+
+.lp-list button {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 10px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    text-align: left;
+    font-family: inherit;
+    cursor: pointer;
+    color: #6366f1;
+}
+
+.lp-list button:hover,
+.lp-list button.on {
+    background: #eef2ff;
+}
+
+.lp-list span {
+    min-width: 0;
+}
+
+.lp-list b {
+    display: block;
+    font-size: 14px;
+    color: #1b1630;
+}
+
+.lp-list small {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 1.35;
+    color: #7a84a3;
+}
+
+/* ---------- current location button ---------- */
+
+.lp-cur {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 9px 15px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: linear-gradient(90deg, #3b82f6, #6366f1);
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.28);
+    transition: 0.15s;
+}
+
+.lp-cur:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.lp-cur:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.lp-err {
+    margin: 8px 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #e5484d;
+}
+
+/* ---------- map ---------- */
+
+.lp-map {
+    position: relative;
+    margin-top: 12px;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid var(--lp-bd);
+    background: #eef2ff;
+}
+
+.lp .lp-map {
+    margin-top: 14px;
+}
+
+.lp-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.lp-open {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #fff;
+    color: #4f46e5;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.lp-open:hover {
+    color: #d62976;
+}
+
+.lp-map.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    padding: 12px;
+}
+
+.lp-map.empty span {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #fff;
+    color: #d62976;
+    box-shadow: 0 8px 18px rgba(214, 41, 118, 0.2);
+}
+
+.lp-map.empty p {
+    margin: 0;
+    font-size: 13px;
+    color: #7a84a3;
+}
+
+/* ---------- dark mode ---------- */
+
+body.candidate-dark .lp-box,
+body.candidate-dark .lp-list {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+body.candidate-dark .lp-box input,
+body.candidate-dark .cp-edit-box .lp-box input,
+body.candidate-dark .lp-list b {
+    color: #eef2ff;
+}
+
+body.candidate-dark .lp-list small {
+    color: #a9b4d6;
+}
+
+body.candidate-dark .lp-list button:hover,
+body.candidate-dark .lp-list button.on {
+    background: rgba(255, 255, 255, 0.08);
+}

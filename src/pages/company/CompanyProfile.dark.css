@@ -1,0 +1,39 @@
+/* AUTO-GENERATED dark theme for CompanyProfile.css
+   Sirf [data-theme="dark"] mein chalta hai, light theme ko touch nahi karta.
+   Kisi rule ka dark look badalna ho to yahin edit karo. */
+
+:where([data-theme="dark"]) .cp-blob.b2 {
+    background: rgba(82, 36, 50, 0.53);
+}
+
+:where([data-theme="dark"]) .cp-swatches button {
+    border: 2px solid rgba(35, 40, 52, 0.6);
+}
+
+:where([data-theme="dark"]) .cp-swatches button.on {
+    border-color: #232834;
+}
+
+:where([data-theme="dark"]) .cp-hiring-pill {
+    color: #32e396;
+}
+
+:where([data-theme="dark"]) .cp-chips .cp-rating-chip {
+    color: #eeb24d;
+}
+
+:where([data-theme="dark"]) .cp-tone-orange .cp-stat-icon {
+    color: #f3be64;
+}
+
+:where([data-theme="dark"]) .cp-status-active {
+    color: #32e396;
+}
+
+:where([data-theme="dark"]) .cp-status-paused {
+    color: #eeb24d;
+}
+
+:where([data-theme="dark"]) .cp-stars .on {
+    color: #f6d397;
+}

@@ -1,0 +1,57 @@
+/* ==========================================================
+   THEME TOKENS  (light + dark ek hi jagah)
+   - <html data-theme="dark|light"> ThemeProvider set karta hai
+   - Tailwind utilities: bg-bg, bg-surface, bg-surface-2, text-text,
+     text-muted, border-border, bg-brand ...   (dark: variant bhi chalta hai)
+   ========================================================== */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+    --bg: #f6f7fb;
+    --surface: #ffffff;
+    --surface-2: #f1f3f9;
+    --text: #171923;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --brand: #5b3df5;
+    --brand-contrast: #ffffff;
+}
+
+[data-theme="dark"] {
+    --bg: #0c0e13;
+    --surface: #171a28;
+    --surface-2: #202333;
+    --text: #f5f7fb;
+    --muted: #a9adbd;
+    --border: #292d3d;
+    --brand: #a995ff;
+    --brand-contrast: #0c0e13;
+}
+
+@theme inline {
+    --color-bg: var(--bg);
+    --color-surface: var(--surface);
+    --color-surface-2: var(--surface-2);
+    --color-text: var(--text);
+    --color-muted: var(--muted);
+    --color-border: var(--border);
+    --color-brand: var(--brand);
+    --color-brand-contrast: var(--brand-contrast);
+}
+
+/* Login / Register modal (inline styles in SimpleLogin.jsx in variables se rang lete hain) */
+:root {
+    --auth-surface: #ffffff;
+    --auth-text: #10182d;
+    --auth-muted: #64748b;
+    --auth-input-bg: #f5f5f7;
+    --auth-border: #dddddd;
+}
+
+[data-theme="dark"] {
+    --auth-surface: #171a28;
+    --auth-text: #f5f7fb;
+    --auth-muted: #a9adbd;
+    --auth-input-bg: #202333;
+    --auth-border: #2c3040;
+}

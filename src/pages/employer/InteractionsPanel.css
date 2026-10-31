@@ -1,0 +1,474 @@
+/* =========================================================
+   LAYOUT: left = cards (1 column), right = Interactions slot
+========================================================= */
+
+.tc-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 24px;
+    align-items: start;
+}
+
+.tc-main {
+    min-width: 0;
+}
+
+.tc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+
+
+/* =========================================================
+   INTERACTIONS SIDE PANEL
+========================================================= */
+
+.ip-panel {
+    --ip-g: linear-gradient(90deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+
+    position: sticky;
+    top: 92px;
+    /* topbar ki height ke hisaab se adjust karo */
+
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 112px);
+    overflow: hidden;
+    z-index: 5;
+    border-radius: 28px;
+    padding: 24px 20px 14px;
+    color: #1b1630;
+    font-family: inherit;
+    border: 1px solid #e8ecf7;
+    background:
+        radial-gradient(260px 180px at 100% 0%, rgba(250, 126, 30, 0.14), transparent 70%),
+        radial-gradient(260px 200px at 0% 100%, rgba(79, 91, 213, 0.12), transparent 70%),
+        #ffffff;
+    box-shadow: 0 18px 44px rgba(79, 91, 213, 0.14);
+    animation: ip-rise 0.5s ease backwards;
+}
+
+.ip-panel * {
+    box-sizing: border-box;
+}
+
+.ip-bar {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 5px;
+    background: var(--ip-g);
+}
+
+/* ---------- Header ---------- */
+
+.ip-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.ip-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.ip-sub {
+    margin: 3px 0 0;
+    font-size: 13px;
+    color: #6b7596;
+}
+
+.ip-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: linear-gradient(90deg, #fa7e1e, #d62976);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    box-shadow: 0 6px 14px rgba(214, 41, 118, 0.3);
+}
+
+.ip-new i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    animation: ip-pulse 1.8s ease-out infinite;
+}
+
+/* ---------- Tabs ---------- */
+
+.ip-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 16px 0 8px;
+}
+
+.ip-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #e3e9f7;
+    background: #fff;
+    color: #4b5878;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 11px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.ip-tab:hover {
+    border-color: #d62976;
+    color: #d62976;
+}
+
+.ip-tab b {
+    font-size: 11px;
+    background: #eef2fb;
+    color: #4b5878;
+    border-radius: 999px;
+    padding: 1px 7px;
+    font-weight: 700;
+}
+
+.ip-tab.on {
+    background: linear-gradient(90deg, #fa7e1e, #d62976);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(214, 41, 118, 0.28);
+}
+
+.ip-tab.on b {
+    background: rgba(255, 255, 255, 0.28);
+    color: #fff;
+}
+
+/* ---------- List ---------- */
+
+.ip-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 2px 0 0;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+.ip-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.ip-list::-webkit-scrollbar-thumb {
+    background: #d4daee;
+    border-radius: 20px;
+}
+
+.ip-item {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    padding: 14px 8px;
+    border-bottom: 1px solid #eef1f9;
+    border-radius: 16px;
+    transition: background 0.2s;
+    animation: ip-rise 0.45s ease backwards;
+}
+
+.ip-item:last-child {
+    border-bottom: 0;
+}
+
+.ip-item:hover {
+    background: var(--tint);
+}
+
+/* type colours: apply = orange, save = blue, like = pink, request = violet */
+.t-apply {
+    --a: #fa7e1e;
+    --a2: #fdb74a;
+    --tint: rgba(250, 126, 30, 0.08);
+    --tagbg: #fff0dd;
+    --tagfg: #b4540a;
+}
+
+.t-save {
+    --a: #3b82f6;
+    --a2: #38bdf8;
+    --tint: rgba(59, 130, 246, 0.08);
+    --tagbg: #e1eeff;
+    --tagfg: #1d4ed8;
+}
+
+.t-like {
+    --a: #d62976;
+    --a2: #f472b6;
+    --tint: rgba(214, 41, 118, 0.08);
+    --tagbg: #ffe2ee;
+    --tagfg: #be185d;
+}
+
+.t-request {
+    --a: #962fbf;
+    --a2: #6366f1;
+    --tint: rgba(150, 47, 191, 0.08);
+    --tagbg: #f0e3fb;
+    --tagfg: #7e22ce;
+}
+
+.ip-av {
+    position: relative;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--a), var(--a2));
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.ip-ic {
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--a);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.ip-body {
+    min-width: 0;
+    flex: 1;
+}
+
+.ip-item.unread .ip-body {
+    padding-right: 14px;
+}
+
+.ip-text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #3b4766;
+}
+
+.ip-text b {
+    color: #1b1630;
+    font-weight: 700;
+}
+
+.ip-text em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--a);
+}
+
+.ip-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.ip-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #7a84a3;
+}
+
+.ip-tag {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 11px;
+    border-radius: 999px;
+    background: var(--tagbg);
+    color: var(--tagfg);
+}
+
+.ip-dot {
+    position: absolute;
+    top: 18px;
+    right: 8px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--a);
+    box-shadow: 0 0 0 4px var(--tint);
+}
+
+.ip-empty {
+    margin: 20px 0;
+    text-align: center;
+    color: #7a84a3;
+    font-size: 13px;
+}
+
+/* ---------- Footer ---------- */
+
+.ip-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+    padding-top: 12px;
+    border-top: 1px solid #eef1f9;
+}
+
+.ip-link,
+.ip-all {
+    border: 0;
+    background: none;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 4px 2px;
+}
+
+.ip-link {
+    color: #d62976;
+}
+
+.ip-all {
+    color: #4f5bd5;
+}
+
+.ip-uptodate {
+    font-size: 13px;
+    color: #7a84a3;
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes ip-rise {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}
+
+@keyframes ip-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    100% {
+        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ip-panel,
+    .ip-item,
+    .ip-new i {
+        animation: none !important;
+    }
+}
+
+/* ---------- Dark mode (body.candidate-dark) ---------- */
+
+body.candidate-dark .ip-panel {
+    color: #eef2ff;
+    border-color: rgba(255, 255, 255, 0.12);
+    background:
+        radial-gradient(260px 180px at 100% 0%, rgba(250, 126, 30, 0.16), transparent 70%),
+        radial-gradient(260px 200px at 0% 100%, rgba(79, 91, 213, 0.22), transparent 70%),
+        #141a33;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4);
+}
+
+body.candidate-dark .ip-sub,
+body.candidate-dark .ip-date,
+body.candidate-dark .ip-empty,
+body.candidate-dark .ip-uptodate {
+    color: #a9b4d6;
+}
+
+body.candidate-dark .ip-text {
+    color: #cdd6f0;
+}
+
+body.candidate-dark .ip-text b {
+    color: #fff;
+}
+
+body.candidate-dark .ip-tab {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: #dbe3ff;
+}
+
+body.candidate-dark .ip-tab b {
+    background: rgba(255, 255, 255, 0.12);
+    color: #dbe3ff;
+}
+
+body.candidate-dark .ip-tab.on {
+    background: linear-gradient(90deg, #fa7e1e, #d62976);
+    color: #fff;
+}
+
+body.candidate-dark .ip-item,
+body.candidate-dark .ip-foot {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- Responsive: chhoti screen par normal flow ---------- */
+
+@media (max-width: 1100px) {
+    .tc-layout {
+        grid-template-columns: 1fr;
+        margin-top: 28px;
+    }
+
+
+
+    .ip-panel {
+        position: static;
+        width: auto;
+        max-height: none;
+    }
+}
+
+.employer-app,
+.employer-app .candidate-layout,
+.employer-app .candidate-main,
+.employer-app .jobs-section,
+.employer-app .tc-layout {
+    overflow: visible !important;
+}
+
+/* Cards ko neeche karo */
+.tc-main {
+    padding-top: 28px;
+}
+
+/* Interactions ko bhi utna hi neeche karo */
+.ip-panel {
+    margin-top: 28px;
+}

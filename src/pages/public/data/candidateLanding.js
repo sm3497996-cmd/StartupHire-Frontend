@@ -1,0 +1,90 @@
+export const jobs = [
+    {
+        logo: "Z",
+        title: "Frontend Developer",
+        company: "Zentry Labs",
+        location: "Remote",
+        type: "Full Time",
+        salary: "₹6L - ₹12L",
+        match: "96%",
+    },
+    {
+        logo: "P",
+        title: "Product Designer",
+        company: "PixelForge",
+        location: "Bangalore",
+        type: "Full Time",
+        salary: "₹10L - ₹16L",
+        match: "92%",
+    },
+    {
+        logo: "S",
+        title: "UI/UX Designer",
+        company: "NovaTech",
+        location: "Mumbai",
+        type: "Full Time",
+        salary: "₹5L - ₹10L",
+        match: "90%",
+    },
+    {
+        logo: "C",
+        title: "Backend Developer",
+        company: "CloudCast",
+        location: "Remote",
+        type: "Full Time",
+        salary: "₹8L - ₹15L",
+        match: "88%",
+    },
+    {
+        logo: "D",
+        title: "Data Analyst",
+        company: "InsightAI",
+        location: "Hyderabad",
+        type: "Internship",
+        salary: "₹3L - ₹6L",
+        match: "86%",
+    },
+];
+
+export const applications = [
+    {
+        logo: "Z",
+        title: "Frontend Developer",
+        company: "Zentry Labs",
+        status: "Under Review",
+        time: "Applied 2 days ago",
+    },
+    {
+        logo: "P",
+        title: "Product Designer",
+        company: "PixelForge",
+        status: "Interview Scheduled",
+        time: "Applied 3 days ago",
+    },
+    {
+        logo: "C",
+        title: "Full Stack Developer",
+        company: "CloudCast",
+        status: "Shortlisted",
+        time: "Applied 4 days ago",
+    },
+    {
+        logo: "D",
+        title: "Data Analyst",
+        company: "InsightAI",
+        status: "Applied",
+        time: "Applied 5 days ago",
+    },
+];
+
+export const skills = [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Node.js",
+    "MongoDB",
+    "Git",
+    "Figma",
+    "JavaScript",
+];

@@ -1,0 +1,624 @@
+/* =========================================================
+   COMPANY PROFILE  -  colourful layout (blue / pink / orange theme)
+   Isko sabse LAST me import karo (CompanyProfileBlue.css ke baad).
+========================================================= */
+
+.cp-page {
+    --cx-rainbow: linear-gradient(90deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+
+/* ---------- 1) Page layout ---------- */
+
+.cp-page .cp-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 380px !important;
+    gap: 24px !important;
+    align-items: start !important;
+}
+
+.cp-page .cp-main,
+.cp-page .cp-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+/* ---------- 2) Cards: tint glow + rainbow strip + accent colours ---------- */
+
+.cp-page .cp-card {
+    --a1: #3b82f6;
+    --a2: #6366f1;
+    --tint: rgba(59, 130, 246, 0.16);
+
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    border-radius: 26px !important;
+    border: 1px solid rgba(120, 140, 230, 0.25) !important;
+    background:
+        radial-gradient(340px 190px at 100% 0%, var(--tint), transparent 70%),
+        radial-gradient(280px 170px at 0% 100%, rgba(236, 72, 153, 0.08), transparent 70%),
+        #ffffff !important;
+    box-shadow: 0 16px 38px rgba(8, 18, 70, 0.24) !important;
+    animation: cx-rise 0.5s ease backwards;
+}
+
+.cp-page .cp-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--a1), var(--a2));
+}
+
+/* har card ka apna rang */
+.cp-page .cp-main>.cp-card:nth-child(5n + 2),
+.cp-page .cp-side>.cp-card:nth-child(4n + 2) {
+    --a1: #ec4899;
+    --a2: #fa7e1e;
+    --tint: rgba(236, 72, 153, 0.16);
+}
+
+.cp-page .cp-main>.cp-card:nth-child(5n + 3),
+.cp-page .cp-side>.cp-card:nth-child(4n + 3) {
+    --a1: #8b5cf6;
+    --a2: #3b82f6;
+    --tint: rgba(139, 92, 246, 0.16);
+}
+
+.cp-page .cp-main>.cp-card:nth-child(5n + 4),
+.cp-page .cp-side>.cp-card:nth-child(4n + 4) {
+    --a1: #fa7e1e;
+    --a2: #d62976;
+    --tint: rgba(250, 126, 30, 0.16);
+}
+
+.cp-page .cp-main>.cp-card:nth-child(5n + 5) {
+    --a1: #06b6d4;
+    --a2: #3b82f6;
+    --tint: rgba(6, 182, 212, 0.16);
+}
+
+.cp-page .cp-main>.cp-card:nth-child(2) {
+    animation-delay: 0.05s;
+}
+
+.cp-page .cp-main>.cp-card:nth-child(3) {
+    animation-delay: 0.1s;
+}
+
+.cp-page .cp-main>.cp-card:nth-child(4) {
+    animation-delay: 0.15s;
+}
+
+.cp-page .cp-main>.cp-card:nth-child(5) {
+    animation-delay: 0.2s;
+}
+
+.cp-page .cp-main>.cp-card:nth-child(6) {
+    animation-delay: 0.25s;
+}
+
+@keyframes cx-rise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+}
+
+.cp-page .cp-card:hover {
+    box-shadow: 0 22px 46px rgba(8, 18, 70, 0.32) !important;
+}
+
+/* ---------- 3) Card header ---------- */
+
+.cp-page .cp-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.cp-page .cp-card-head h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #14123a;
+}
+
+.cp-page .cp-card-head h3::before {
+    content: "";
+    flex: none;
+    width: 6px;
+    height: 22px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, var(--a1), var(--a2));
+}
+
+/* Edit button: card ke rang me gradient pill */
+.cp-page .cp-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 15px;
+    border: 0 !important;
+    border-radius: 999px !important;
+    font-weight: 700;
+    color: #fff !important;
+    background: linear-gradient(90deg, var(--a1), var(--a2)) !important;
+    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.25);
+    transition: 0.15s;
+}
+
+.cp-page .cp-link-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+}
+
+/* ---------- 4) Company facts: 6 alag rang ke tiles ---------- */
+
+.cp-page .cp-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px;
+}
+
+.cp-page .cp-fact {
+    --f1: #3b82f6;
+    --f2: #6366f1;
+    --fbg: #e8f0ff;
+    --fbd: #d3defc;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 80px;
+    padding: 14px 16px;
+    border-radius: 18px !important;
+    border: 1px solid var(--fbd) !important;
+    background: linear-gradient(135deg, var(--fbg), #ffffff 85%) !important;
+    transition: 0.15s;
+}
+
+.cp-page .cp-fact:hover {
+    transform: translateY(-2px);
+}
+
+.cp-page .cp-fact:nth-child(6n + 2) {
+    --f1: #8b5cf6;
+    --f2: #d946ef;
+    --fbg: #f1e9ff;
+    --fbd: #e0d0ff;
+}
+
+.cp-page .cp-fact:nth-child(6n + 3) {
+    --f1: #fb923c;
+    --f2: #f59e0b;
+    --fbg: #fff1e0;
+    --fbd: #ffdcae;
+}
+
+.cp-page .cp-fact:nth-child(6n + 4) {
+    --f1: #ec4899;
+    --f2: #fb7185;
+    --fbg: #ffe8f1;
+    --fbd: #ffcfe2;
+}
+
+.cp-page .cp-fact:nth-child(6n + 5) {
+    --f1: #06b6d4;
+    --f2: #3b82f6;
+    --fbg: #e0f7ff;
+    --fbd: #bfeaf7;
+}
+
+.cp-page .cp-fact:nth-child(6n + 6) {
+    --f1: #10b981;
+    --f2: #14b8a6;
+    --fbg: #e0f8ee;
+    --fbd: #bdeed7;
+}
+
+.cp-page .cp-fact>span {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px !important;
+    color: #fff !important;
+    background: linear-gradient(135deg, var(--f1), var(--f2)) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+}
+
+.cp-page .cp-fact>div {
+    min-width: 0;
+}
+
+.cp-page .cp-fact small {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 12px;
+    color: #6b7596;
+}
+
+.cp-page .cp-fact strong {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
+    word-break: break-word;
+    color: #14123a;
+}
+
+/* ---------- 5) Perks & benefits: rangeen cards ---------- */
+
+.cp-page .cp-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 12px;
+}
+
+.cp-page .cp-benefit {
+    --b1: #3b82f6;
+    --b2: #6366f1;
+    --bt: #e8f0ff;
+    --bb: #d3defc;
+
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: center;
+    height: auto;
+    min-height: 0;
+    padding: 14px 16px;
+    border-radius: 18px !important;
+    border: 1px solid var(--bb) !important;
+    background: linear-gradient(135deg, var(--bt), #ffffff 80%) !important;
+    transition: 0.15s;
+}
+
+.cp-page .cp-benefit:hover {
+    transform: translateY(-2px);
+}
+
+.cp-page .cp-benefit:nth-child(6n + 2) {
+    --b1: #ec4899;
+    --b2: #fb7185;
+    --bt: #ffe8f1;
+    --bb: #ffcfe2;
+}
+
+.cp-page .cp-benefit:nth-child(6n + 3) {
+    --b1: #fb923c;
+    --b2: #f59e0b;
+    --bt: #fff1e0;
+    --bb: #ffdcae;
+}
+
+.cp-page .cp-benefit:nth-child(6n + 4) {
+    --b1: #8b5cf6;
+    --b2: #d946ef;
+    --bt: #f1e9ff;
+    --bb: #e0d0ff;
+}
+
+.cp-page .cp-benefit:nth-child(6n + 5) {
+    --b1: #06b6d4;
+    --b2: #3b82f6;
+    --bt: #e0f7ff;
+    --bb: #bfeaf7;
+}
+
+.cp-page .cp-benefit:nth-child(6n + 6) {
+    --b1: #10b981;
+    --b2: #14b8a6;
+    --bt: #e0f8ee;
+    --bb: #bdeed7;
+}
+
+.cp-page .cp-benefit>span {
+    grid-row: 1 / span 2;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    border-radius: 14px !important;
+    color: #fff !important;
+    background: linear-gradient(135deg, var(--b1), var(--b2)) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+}
+
+.cp-page .cp-benefit>strong {
+    grid-column: 2;
+    line-height: 1.3;
+    color: #14123a;
+}
+
+.cp-page .cp-benefit>p {
+    grid-column: 2;
+    margin: 4px 0 0;
+}
+
+.cp-page .cp-benefit>p:empty {
+    display: none;
+}
+
+/* ---------- 6) Tech tags: 4 rang ---------- */
+
+.cp-page .cp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.cp-page .cp-tags span {
+    padding: 8px 16px;
+    border-radius: 999px !important;
+    font-size: 13px;
+    font-weight: 700;
+    border: 1px solid #d3defc !important;
+    background: #e8efff !important;
+    color: #3b4fd8 !important;
+}
+
+.cp-page .cp-tags span:nth-child(4n + 2) {
+    background: #ffe8f2 !important;
+    color: #be185d !important;
+    border-color: #ffd1e3 !important;
+}
+
+.cp-page .cp-tags span:nth-child(4n + 3) {
+    background: #fff0dd !important;
+    color: #b4540a !important;
+    border-color: #ffdcae !important;
+}
+
+.cp-page .cp-tags span:nth-child(4n + 4) {
+    background: #efe7ff !important;
+    color: #6d28d9 !important;
+    border-color: #dccbff !important;
+}
+
+/* ---------- 7) How we hire (steps) ---------- */
+
+.cp-page .cp-step-dot {
+    color: #fff !important;
+    background: linear-gradient(135deg, #fa7e1e, #d62976) !important;
+    box-shadow: 0 8px 16px rgba(214, 41, 118, 0.3);
+}
+
+.cp-page .cp-steps li {
+    border-radius: 16px;
+    transition: 0.15s;
+}
+
+.cp-page .cp-steps li:hover,
+.cp-page .cp-steps li.open {
+    background: linear-gradient(90deg, rgba(250, 126, 30, 0.1), rgba(214, 41, 118, 0.05));
+}
+
+/* ---------- 8) Mission & vision ---------- */
+
+.cp-page .cp-mission {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.cp-page .cp-mission>div {
+    padding: 16px 18px;
+    border-radius: 18px;
+    border-left: 4px solid #3b82f6;
+    background: linear-gradient(135deg, #e8f0ff, #ffffff 85%);
+}
+
+.cp-page .cp-mission>div:nth-child(2) {
+    border-left-color: #ec4899;
+    background: linear-gradient(135deg, #ffe8f1, #ffffff 85%);
+}
+
+.cp-page .cp-mission b {
+    color: #14123a;
+}
+
+/* ---------- 9) Empty state ---------- */
+
+.cp-zero {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    border: 1.5px dashed rgba(99, 102, 241, 0.35);
+    background: rgba(99, 102, 241, 0.06);
+    color: #6b7596;
+}
+
+.cp-zero span {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--a1, #3b82f6), var(--a2, #6366f1));
+    box-shadow: 0 8px 16px rgba(79, 70, 229, 0.25);
+}
+
+.cp-zero p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.cp-zero b {
+    color: #4f46e5;
+}
+
+/* ---------- 10) Profile strength ---------- */
+
+.cp-page .cp-ring b {
+    font-weight: 800;
+    background: linear-gradient(90deg, #3b82f6, #d62976);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.cp-page .cp-checklist {
+    display: grid;
+    gap: 11px;
+}
+
+.cp-page .cp-checklist li em {
+    margin-left: auto;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff !important;
+    background: linear-gradient(90deg, #fa7e1e, #d62976);
+}
+
+.cp-page .cp-checklist li.done {
+    font-weight: 700;
+    color: #14123a;
+}
+
+/* ---------- 11) Tabs + office ---------- */
+
+.cp-page .cp-tab-indicator {
+    background: linear-gradient(90deg, #fa7e1e, #d62976, #6366f1) !important;
+}
+
+.cp-page .cp-map {
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.cp-page .cp-address {
+    margin: 12px 0 0;
+    line-height: 1.45;
+}
+
+/* ---------- Dark mode ---------- */
+
+body.candidate-dark .cp-page .cp-card {
+    background:
+        radial-gradient(340px 190px at 100% 0%, var(--tint), transparent 70%),
+        #141a33 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.candidate-dark .cp-page .cp-card-head h3,
+body.candidate-dark .cp-page .cp-fact strong,
+body.candidate-dark .cp-page .cp-benefit>strong,
+body.candidate-dark .cp-page .cp-mission b {
+    color: #eef2ff;
+}
+
+body.candidate-dark .cp-page .cp-fact,
+body.candidate-dark .cp-page .cp-benefit {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.candidate-dark .cp-page .cp-mission>div {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+body.candidate-dark .cp-zero {
+    background: rgba(255, 255, 255, 0.05);
+    color: #a9b4d6;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1180px) {
+    .cp-page .cp-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 620px) {
+
+    .cp-page .cp-mission,
+    .cp-page .cp-facts,
+    .cp-page .cp-benefits {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cp-page .cp-card {
+        animation: none;
+    }
+}
+
+.cp-page .cp-glass-danger:hover {
+    background: rgba(229, 72, 77, 0.92) !important;
+    border-color: transparent !important;
+    color: #fff !important;
+}
+
+.cp-page .cp-cover-tools>div {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* ---------- Company facts: ek line = ek fact (poora text dikhe) ---------- */
+
+.cp-page .cp-facts {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+}
+
+.cp-page .cp-fact {
+    min-height: 64px;
+    padding: 12px 16px;
+}
+
+/* label left, value right */
+.cp-page .cp-fact>div {
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 16px;
+}
+
+.cp-page .cp-fact small {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7596;
+}
+
+/* pehle 2 line pe cut hota tha, ab poora dikhega */
+.cp-page .cp-fact strong {
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    overflow: visible !important;
+    font-size: 15px;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+/* chhoti screen: label upar, value neeche */
+@media (max-width: 620px) {
+    .cp-page .cp-fact>div {
+        grid-template-columns: 1fr;
+        row-gap: 2px;
+    }
+}

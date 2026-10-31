@@ -1,0 +1,358 @@
+.cp-wrap {
+    --cp-grad: linear-gradient(135deg, #f7971e 0%, #ee2a7b 50%, #6228d7 100%);
+    --cp-border: rgba(120, 120, 140, 0.28);
+    --cp-field-bg: rgba(120, 120, 140, 0.05);
+    --cp-card-bg: #ffffff;
+    --cp-stage-bg: #f1eeea;
+    --cp-accent: #ee2a7b;
+    width: 100%;
+    box-sizing: border-box;
+    color: inherit;
+}
+
+.candidate-app.dark .cp-wrap,
+body.employer-dark .cp-wrap {
+    --cp-card-bg: #1c1e2b;
+    --cp-stage-bg: #14151f;
+}
+
+.cp-intro h1 {
+    margin: 0 0 6px;
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.cp-intro p {
+    margin: 0 0 22px;
+    max-width: 560px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    opacity: 0.75;
+}
+
+.cp-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 22px;
+    align-items: start;
+}
+
+/* ---------- Form card ---------- */
+.cp-form-card,
+.cp-preview-card {
+    background: var(--cp-card-bg);
+    border: 1px solid var(--cp-border);
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.cp-form-card {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.cp-required-note {
+    margin: 0;
+    font-size: 12.5px;
+    opacity: 0.65;
+}
+
+.cp-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.cp-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.cp-field>label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cp-field input,
+.cp-field select,
+.cp-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1.5px solid var(--cp-border);
+    background: var(--cp-field-bg);
+    color: inherit;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cp-field textarea {
+    resize: vertical;
+}
+
+.cp-field input:focus,
+.cp-field select:focus,
+.cp-field textarea:focus {
+    border-color: var(--cp-accent);
+    box-shadow: 0 0 0 3px rgba(238, 42, 123, 0.12);
+}
+
+.cp-hint {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12px;
+    opacity: 0.65;
+}
+
+.cp-hint b {
+    font-weight: 600;
+}
+
+.cp-error {
+    font-size: 12px;
+    color: #ef4444;
+    font-weight: 600;
+}
+
+/* ---------- Logo ---------- */
+.cp-dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 22px 12px;
+    border: 2px dashed var(--cp-border);
+    border-radius: 12px;
+    background: var(--cp-field-bg);
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.cp-dropzone:hover {
+    border-color: var(--cp-accent);
+    background: rgba(238, 42, 123, 0.05);
+}
+
+.cp-drop-title {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.cp-logo-picked {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px;
+    border: 1.5px solid var(--cp-border);
+    border-radius: 12px;
+}
+
+.cp-logo-picked img {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.cp-logo-picked strong {
+    display: block;
+    font-size: 13px;
+    word-break: break-all;
+}
+
+.cp-logo-picked button {
+    margin-top: 4px;
+    border: none;
+    background: none;
+    color: #ef4444;
+    font-weight: 700;
+    font-size: 12.5px;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* ---------- Checkbox ---------- */
+.cp-check {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.cp-check input {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: var(--cp-accent);
+    flex-shrink: 0;
+}
+
+/* ---------- Preview ---------- */
+.cp-preview-col {
+    position: sticky;
+    top: 90px;
+}
+
+.cp-preview-card {
+    overflow: hidden;
+}
+
+.cp-preview-title {
+    padding: 14px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--cp-border);
+}
+
+.cp-preview-stage {
+    background: var(--cp-stage-bg);
+    padding: 24px;
+}
+
+.cp-company-card {
+    background: var(--cp-card-bg);
+    border: 1px solid var(--cp-border);
+    border-radius: 14px;
+    padding: 22px;
+}
+
+.cp-company-logo {
+    width: 96px;
+    height: 96px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--cp-grad);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.cp-company-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cp-company-card h2 {
+    margin: 16px 0 6px;
+    font-size: 24px;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.cp-p-tagline,
+.cp-p-meta {
+    margin: 0 0 6px;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.cp-p-meta {
+    opacity: 0.7;
+}
+
+.is-empty {
+    opacity: 0.4 !important;
+}
+
+.cp-p-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0 16px;
+}
+
+.cp-p-chips span {
+    padding: 5px 11px;
+    border-radius: 16px;
+    font-size: 12.5px;
+    font-weight: 600;
+    background: rgba(238, 42, 123, 0.09);
+    color: var(--cp-accent);
+}
+
+.cp-follow {
+    border: none;
+    background: var(--cp-grad);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 22px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: default;
+}
+
+/* ---------- Submit ---------- */
+.cp-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+}
+
+.cp-submit {
+    border: none;
+    background: var(--cp-grad);
+    color: #fff;
+    padding: 13px 44px;
+    border-radius: 26px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(98, 40, 215, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.cp-submit:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(98, 40, 215, 0.4);
+}
+
+.cp-submit:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.cp-wrap :focus-visible {
+    outline: 2px solid var(--cp-accent);
+    outline-offset: 2px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .cp-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cp-preview-col {
+        position: static;
+        order: 2;
+    }
+
+    .cp-actions {
+        order: 3;
+    }
+}
+
+@media (max-width: 520px) {
+    .cp-row {
+        grid-template-columns: 1fr;
+    }
+
+    .cp-form-card {
+        padding: 18px;
+    }
+}

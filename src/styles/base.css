@@ -1,0 +1,43 @@
+/* Global reset / element styles (pehle index.css ke andar the) */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #ffffff;
+    color: #10182d;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+img {
+    display: block;
+}
+
+::selection {
+    background: #e9d5ff;
+    color: #581c87;
+}

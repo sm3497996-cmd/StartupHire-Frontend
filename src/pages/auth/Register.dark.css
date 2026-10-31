@@ -1,0 +1,44 @@
+/* AUTO-GENERATED dark theme for Register.css
+   Sirf [data-theme="dark"] mein chalta hai, light theme ko touch nahi karta.
+   Kisi rule ka dark look badalna ho to yahin edit karo. */
+
+:where([data-theme="dark"]) .register-modal {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .register-close {
+    background: rgba(21, 24, 33, 0.9);
+}
+
+:where([data-theme="dark"]) .register-form-side h2 {
+    color: #d3d9e7;
+}
+
+:where([data-theme="dark"]) .register-subtext {
+    color: #959da8;
+}
+
+:where([data-theme="dark"]) .register-type-switch {
+    background: #131a21;
+    border: 1px solid #2a303b;
+}
+
+:where([data-theme="dark"]) .register-type-switch button {
+    color: #959da8;
+}
+
+:where([data-theme="dark"]) .register-form input[type="text"],
+:where([data-theme="dark"]) .register-form input[type="email"],
+:where([data-theme="dark"]) .register-form input[type="tel"],
+:where([data-theme="dark"]) .register-form input[type="password"] {
+    border: 1px solid #2c3541;
+    color: #cbd1dc;
+}
+
+:where([data-theme="dark"]) .register-terms {
+    color: #959da8;
+}
+
+:where([data-theme="dark"]) .register-terms span {
+    color: #c2a6f2;
+}

@@ -1,0 +1,175 @@
+/* =========================================================
+   Company Profile: blue modern theme
+   Sirf .cp-page (Company Profile) ke andar lagta hai,
+   setup page par nahi.
+   Blue panel sirf neeche ke content (cards + side column) ke peeche.
+========================================================= */
+
+.employer-app .cp-page {
+    --cp-brand: #3b5bf0;
+    --cp-brand-soft: rgba(59, 91, 240, 0.12);
+    --cp-border: #dfe7ff;
+}
+
+/* ---------- Blue panel: sirf .cp-layout ke peeche ---------- */
+.employer-app .cp-page .cp-layout {
+    position: relative;
+    isolation: isolate;
+    padding: clamp(16px, 2.2vw, 28px);
+    border-radius: 30px;
+    border: 1px solid rgba(120, 150, 255, 0.25);
+    background:
+        radial-gradient(520px 320px at 100% 0%, rgba(96, 165, 250, 0.35), transparent 70%),
+        radial-gradient(480px 340px at 0% 100%, rgba(99, 102, 241, 0.35), transparent 70%),
+        linear-gradient(160deg, #14226b 0%, #1b2f8f 45%, #22399f 100%);
+    box-shadow: 0 30px 70px -28px rgba(27, 47, 143, 0.65);
+}
+
+/* halka grid texture */
+.employer-app .cp-page .cp-layout::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 38px 38px;
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent 85%);
+    mask-image: linear-gradient(to bottom, #000, transparent 85%);
+}
+
+/* ---------- Cards: white se ice-blue ---------- */
+.employer-app .cp-page .cp-hero,
+.employer-app .cp-page .cp-card,
+.employer-app .cp-page .cp-stat {
+    background: linear-gradient(160deg, #ffffff 0%, #f3f6ff 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 18px 40px -20px rgba(8, 16, 70, 0.55) !important;
+}
+
+.employer-app .cp-page .cp-fact,
+.employer-app .cp-page .cp-value,
+.employer-app .cp-page .cp-mission>div {
+    background: #eaf0ff !important;
+}
+
+.employer-app .cp-page .cp-benefit,
+.employer-app .cp-page .cp-job,
+.employer-app .cp-page .cp-member {
+    background: #fff !important;
+    border-color: #dfe7ff !important;
+}
+
+/* ---------- Tabs: normal white ---------- */
+.employer-app .cp-page .cp-tabs {
+    background: #fff !important;
+    border: 1px solid #dfe7ff !important;
+}
+
+.employer-app .cp-page .cp-tab {
+    color: #6b6a85;
+}
+
+.employer-app .cp-page .cp-tab:hover {
+    color: #1a1740;
+}
+
+.employer-app .cp-page .cp-tab.active {
+    color: #fff;
+}
+
+.employer-app .cp-page .cp-tab em {
+    background: rgba(59, 91, 240, 0.12);
+    color: #3b5bf0;
+}
+
+.employer-app .cp-page .cp-tab.active em {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+.employer-app .cp-page .cp-tab-indicator {
+    background: linear-gradient(135deg, #3b82f6, #6366f1) !important;
+    box-shadow: 0 8px 20px -8px rgba(59, 130, 246, 0.9);
+}
+
+/* ---------- Blue accents ---------- */
+.employer-app .cp-page .cp-btn-primary {
+    background: linear-gradient(135deg, #2563eb, #6366f1) !important;
+    box-shadow: 0 10px 22px -8px rgba(37, 99, 235, 0.75);
+}
+
+.employer-app .cp-page .cp-logo {
+    background-color: #2563eb;
+    box-shadow: 0 14px 30px -10px rgba(37, 99, 235, 0.6);
+}
+
+.employer-app .cp-page .cp-bar {
+    background: #e3eaff;
+}
+
+.employer-app .cp-page .cp-bar i {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+}
+
+/* ---------- Dark mode ---------- */
+.employer-app.dark .cp-page .cp-layout {
+    background:
+        radial-gradient(520px 320px at 100% 0%, rgba(59, 130, 246, 0.25), transparent 70%),
+        linear-gradient(160deg, #0a1240 0%, #101b5c 50%, #15246e 100%) !important;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.employer-app.dark .cp-page .cp-hero,
+.employer-app.dark .cp-page .cp-card,
+.employer-app.dark .cp-page .cp-stat {
+    background: linear-gradient(160deg, #1a2150, #151b42) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.employer-app.dark .cp-page .cp-tabs {
+    background: #17162b !important;
+    border-color: #2d2b4d !important;
+}
+
+.employer-app.dark .cp-page .cp-tab {
+    color: #a3a1c4;
+}
+
+.employer-app.dark .cp-page .cp-tab:hover {
+    color: #f1f0ff;
+}
+
+.employer-app.dark .cp-page .cp-tab.active {
+    color: #fff;
+}
+
+.employer-app.dark .cp-page .cp-fact,
+.employer-app.dark .cp-page .cp-value,
+.employer-app.dark .cp-page .cp-mission>div {
+    background: #1f2858 !important;
+}
+
+.employer-app.dark .cp-page .cp-benefit,
+.employer-app.dark .cp-page .cp-job,
+.employer-app.dark .cp-page .cp-member {
+    background: #1a2150 !important;
+    border-color: #2a3470 !important;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+    .employer-app .cp-page .cp-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .employer-app .cp-page .cp-layout {
+        padding: 12px;
+        border-radius: 22px;
+    }
+}

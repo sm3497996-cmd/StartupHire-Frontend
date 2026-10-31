@@ -1,0 +1,2604 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+.jobs-page {
+    min-height: 100vh;
+    background: #f7f5ff;
+    color: #17152b;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   MAIN WEBSITE NAVBAR
+========================================================= */
+
+.main-navbar {
+    width: 100%;
+    height: 78px;
+
+    padding: 0 6%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #171432;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 200;
+}
+
+.main-logo {
+    color: white;
+
+    font-size: 25px;
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+}
+
+.main-logo span {
+    color: #ff65b6;
+}
+
+.main-logo .logo-star {
+    margin-right: 7px;
+}
+
+.main-nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+.main-nav-links button {
+    border: none;
+
+    background: transparent;
+
+    color: #d4d0e3;
+
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    transition: 0.3s ease;
+}
+
+.main-nav-links button:hover {
+    color: white;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.main-nav-links button.active {
+    color: #ff65b6;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.main-mobile-btn {
+    display: none;
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 25px;
+}
+
+
+/* =========================================================
+   JOBS SUB NAVBAR
+========================================================= */
+
+.jobs-subnav {
+    width: 100%;
+
+    background: #201b42;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    position: sticky;
+    top: 78px;
+
+    z-index: 150;
+}
+
+.jobs-subnav-inner {
+    max-width: 1250px;
+
+    margin: auto;
+
+    min-height: 58px;
+
+    padding: 0 5%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.jobs-subnav-inner::-webkit-scrollbar {
+    display: none;
+}
+
+.jobs-subnav-inner button {
+    border: none;
+
+    background: transparent;
+
+    color: #bdb8d0;
+
+    padding: 9px 15px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.3s ease;
+
+    white-space: nowrap;
+}
+
+.jobs-subnav-inner button:hover {
+    color: white;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.jobs-subnav-inner button.active {
+    color: #ff69b7;
+
+    background: rgba(255, 105, 183, 0.12);
+}
+
+
+/* =========================================================
+   DISCOVER HERO
+========================================================= */
+
+.jobs-hero {
+    min-height: 600px;
+
+    padding: 80px 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 80% 30%,
+            rgba(157, 100, 255, 0.35),
+            transparent 32%),
+        radial-gradient(circle at 20% 80%,
+            rgba(255, 76, 171, 0.18),
+            transparent 30%),
+        #171432;
+
+    color: white;
+}
+
+.jobs-hero-content {
+    width: 57%;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.small-label,
+.section-label {
+    color: #ff70bc;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.jobs-hero h1 {
+    margin: 18px 0;
+
+    font-size: clamp(45px, 6vw, 76px);
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+}
+
+.jobs-hero h1 span,
+.different-hero h1 span,
+.internship-text h1 span,
+.startup-hero h1 span,
+.remote-copy h1 span,
+.companies-hero h1 span {
+    background: linear-gradient(90deg,
+            #ff67b5,
+            #9c7cff);
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+}
+
+.jobs-hero p {
+    max-width: 650px;
+
+    color: #bdb8d3;
+
+    line-height: 1.7;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   HERO SEARCH
+========================================================= */
+
+.hero-search {
+    margin-top: 35px;
+
+    width: 100%;
+    max-width: 800px;
+
+    padding: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    background: white;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.search-field {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 15px;
+
+    color: #777;
+}
+
+.search-field span {
+    font-size: 20px;
+
+    flex-shrink: 0;
+}
+
+.search-field input {
+    width: 100%;
+
+    min-width: 0;
+
+    border: none;
+
+    outline: none;
+
+    padding: 14px 4px;
+
+    font-size: 14px;
+
+    color: #222;
+
+    background: transparent;
+}
+
+.location-field {
+    border-left: 1px solid #e8e6ee;
+}
+
+.hero-search button {
+    border: none;
+
+    min-width: 150px;
+    /* 120px se badhaya */
+    flex-shrink: 0;
+    /* NAYI LINE - button ko shrink hone se rokega */
+
+    white-space: nowrap;
+
+    padding: 14px 24px;
+    /* thoda extra padding */
+
+    border-radius: 11px;
+
+    color: white;
+
+    font-weight: 700;
+
+    background: linear-gradient(135deg,
+            #ff5db3,
+            #8b6cff);
+
+    box-shadow:
+        0 10px 25px rgba(154, 93, 255, 0.25);
+
+    transition: 0.3s ease;
+}
+
+.hero-search button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(154, 93, 255, 0.35);
+}
+
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.hero-job-preview {
+    width: 35%;
+
+    min-height: 390px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.big-job-visual {
+    width: 290px;
+
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(15px);
+
+    transform: rotate(4deg);
+
+    animation: floatingCard 4s ease-in-out infinite;
+}
+
+.visual-logo,
+.modal-logo {
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: linear-gradient(135deg,
+            #ff64b6,
+            #8c6eff);
+
+    color: white;
+
+    font-size: 24px;
+
+    font-weight: 800;
+}
+
+.big-job-visual h3 {
+    margin: 25px 0 7px;
+
+    font-size: 22px;
+}
+
+.big-job-visual p {
+    color: #aaa6c0;
+
+    font-size: 13px;
+}
+
+.visual-line {
+    height: 1px;
+
+    margin: 25px 0;
+
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.visual-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #dcd9e9;
+
+    font-size: 12px;
+}
+
+.floating-mini-card {
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    border-radius: 15px;
+
+    background: white;
+
+    color: #222;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+
+    animation: floatingSmall 3.5s ease-in-out infinite;
+}
+
+.floating-mini-card span {
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #f2e9ff;
+
+    color: #895cff;
+
+    border-radius: 9px;
+}
+
+.floating-mini-card div {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.floating-mini-card small {
+    color: #8b8797;
+
+    margin-top: 4px;
+}
+
+.card-a {
+    top: 40px;
+
+    left: 0;
+}
+
+.card-b {
+    right: 0;
+
+    bottom: 45px;
+
+    animation-delay: 1s;
+}
+
+@keyframes floatingCard {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(4deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(2deg);
+    }
+}
+
+@keyframes floatingSmall {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
+.jobs-section,
+.inner-container {
+    width: 100%;
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 80px 5%;
+}
+
+.section-heading {
+    display: flex;
+
+    align-items: end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    margin: 8px 0;
+
+    font-size: 34px;
+
+    letter-spacing: -1px;
+}
+
+.section-heading p {
+    color: #77728a;
+
+    margin: 0;
+
+    line-height: 1.6;
+}
+
+.result-count {
+    color: #77728a;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+.category-row {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+
+    flex-wrap: wrap;
+}
+
+.category {
+    padding: 10px 18px;
+
+    border: 1px solid #e4e0ee;
+
+    background: white;
+
+    border-radius: 30px;
+
+    color: #625d73;
+
+    transition: 0.3s;
+}
+
+.category:hover,
+.category.active {
+    color: white;
+
+    border-color: #8d6bff;
+
+    background: linear-gradient(135deg,
+            #ff60b5,
+            #8b6cff);
+}
+
+
+/* =========================================================
+   JOB GRID
+========================================================= */
+
+.jobs-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.job-card {
+    background: white;
+
+    border: 1px solid #e8e4f1;
+
+    border-radius: 22px;
+
+    padding: 24px;
+
+    position: relative;
+
+    transition: 0.35s ease;
+
+    box-shadow:
+        0 10px 35px rgba(57, 40, 94, 0.05);
+
+    animation: cardAppear 0.5s ease both;
+}
+
+.job-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #d1c5ff;
+
+    box-shadow:
+        0 20px 50px rgba(72, 48, 130, 0.13);
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+.job-card-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.company-logo,
+.large-company-logo {
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #f1edff;
+
+    color: #7857dc;
+
+    font-size: 21px;
+
+    font-weight: 800;
+}
+
+.save-btn {
+    width: 36px;
+
+    height: 36px;
+
+    border: 1px solid #ebe7f2;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #777;
+
+    font-size: 19px;
+
+    transition: 0.25s;
+}
+
+.save-btn:hover,
+.save-btn.saved {
+    color: #ff4ca9;
+
+    border-color: #ffb7db;
+
+    background: #fff1f8;
+}
+
+.job-tag {
+    display: inline-block;
+
+    margin-top: 18px;
+
+    padding: 6px 10px;
+
+    background: #f5efff;
+
+    color: #805de5;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.job-card h3 {
+    margin: 15px 0 7px;
+
+    font-size: 19px;
+
+    line-height: 1.35;
+}
+
+.company-name {
+    margin: 0;
+
+    color: #716c7d;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.job-info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin: 20px 0;
+
+    color: #7b7687;
+
+    font-size: 12px;
+}
+
+.job-bottom {
+    padding-top: 18px;
+
+    border-top: 1px solid #eeeaf4;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.job-bottom strong {
+    font-size: 13px;
+}
+
+.view-job-btn {
+    border: none;
+
+    background: transparent;
+
+    color: #805de5;
+
+    font-weight: 700;
+
+    font-size: 12px;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+
+    padding: 60px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid #e6e1ef;
+}
+
+.no-results div {
+    font-size: 40px;
+}
+
+.no-results h3 {
+    margin: 12px 0 5px;
+}
+
+.no-results p {
+    color: #777;
+}
+
+
+/* =========================================================
+   OTHER PAGE BACKGROUNDS
+========================================================= */
+
+.page-section {
+    min-height: 850px;
+}
+
+.latest-page {
+    background: #f3f0ff;
+}
+
+.internship-page {
+    background: #fff6fb;
+}
+
+.startup-page {
+    background: #f5f7ff;
+}
+
+.remote-page {
+    background: #eef9ff;
+}
+
+.companies-page {
+    background: #f8f6ff;
+}
+
+
+/* =========================================================
+   LATEST PAGE
+========================================================= */
+
+.different-hero {
+    min-height: 420px;
+
+    padding: 70px;
+
+    border-radius: 32px;
+
+    background:
+        radial-gradient(circle at 80% 20%,
+            rgba(255, 100, 190, 0.25),
+            transparent 30%),
+        #171432;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 40px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.different-hero h1,
+.internship-text h1,
+.startup-hero h1,
+.remote-copy h1,
+.companies-hero h1 {
+    font-size: clamp(45px, 5vw, 68px);
+
+    line-height: 1.05;
+
+    letter-spacing: -3px;
+
+    margin: 18px 0;
+}
+
+.different-hero p,
+.internship-text p,
+.startup-hero p,
+.remote-copy p,
+.companies-hero p {
+    color: #aaa6bd;
+
+    line-height: 1.7;
+
+    max-width: 600px;
+}
+
+.latest-stat-card {
+    width: 210px;
+
+    height: 210px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg,
+            #ff62b6,
+            #8569ff);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    box-shadow:
+        0 25px 60px rgba(133, 105, 255, 0.3);
+
+    animation: floatingCard 4s infinite;
+}
+
+.stat-number {
+    font-size: 42px;
+
+    font-weight: 800;
+}
+
+.latest-stat-card span {
+    font-size: 12px;
+}
+
+.pulse-dot {
+    width: 8px;
+
+    height: 8px;
+
+    margin-top: 15px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 7px rgba(255, 255, 255, 0.15);
+}
+
+.latest-strip {
+    margin: 45px 0 30px;
+
+    padding: 20px 25px;
+
+    background: white;
+
+    border-radius: 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border: 1px solid #e6e0f5;
+}
+
+.latest-strip div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.latest-strip span {
+    color: #858091;
+
+    font-size: 13px;
+}
+
+.latest-strip button {
+    border: none;
+
+    background: #f1ebff;
+
+    color: #7653db;
+
+    padding: 11px 16px;
+
+    border-radius: 9px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   INTERNSHIP PAGE
+========================================================= */
+
+.internship-hero {
+    padding: 60px;
+
+    min-height: 470px;
+
+    border-radius: 30px;
+
+    background: linear-gradient(135deg,
+            #21152e,
+            #4d2750);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color: white;
+
+    overflow: hidden;
+}
+
+.internship-text {
+    width: 55%;
+}
+
+.internship-points {
+    margin-top: 25px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.internship-points div {
+    padding: 9px 13px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    color: #eee;
+
+    font-size: 12px;
+}
+
+.internship-visual {
+    width: 38%;
+
+    height: 330px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.graduation-card {
+    width: 270px;
+
+    padding: 28px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(10px);
+
+    text-align: center;
+
+    animation: floatingCard 4s infinite;
+}
+
+.graduation-icon {
+    margin: auto;
+
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: linear-gradient(135deg,
+            #ff6bb9,
+            #a17cff);
+
+    font-size: 25px;
+}
+
+.graduation-card h3 {
+    margin: 20px 0 5px;
+}
+
+.graduation-card p {
+    margin: 0;
+
+    color: #c4bfd0;
+}
+
+.progress-line {
+    height: 7px;
+
+    margin: 25px 0 12px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.progress-line span {
+    display: block;
+
+    width: 75%;
+
+    height: 100%;
+
+    background: linear-gradient(90deg,
+            #ff61b5,
+            #a078ff);
+
+    animation: progressMove 3s infinite alternate;
+}
+
+.graduation-card small {
+    color: #bdb8ca;
+}
+
+@keyframes progressMove {
+    from {
+        width: 50%;
+    }
+
+    to {
+        width: 90%;
+    }
+}
+
+.visual-note {
+    position: absolute;
+
+    padding: 11px 16px;
+
+    border-radius: 12px;
+
+    background: white;
+
+    color: #5e4964;
+
+    font-weight: 700;
+
+    font-size: 12px;
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.note-one {
+    top: 20px;
+
+    right: 0;
+
+    transform: rotate(6deg);
+}
+
+.note-two {
+    bottom: 25px;
+
+    left: 0;
+
+    transform: rotate(-6deg);
+}
+
+.internship-heading {
+    margin-top: 65px;
+}
+
+
+/* =========================================================
+   STARTUP PAGE
+========================================================= */
+
+.startup-hero {
+    min-height: 480px;
+
+    padding: 70px;
+
+    border-radius: 32px;
+
+    background: #15142d;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    overflow: hidden;
+}
+
+.startup-hero>div:first-child {
+    width: 55%;
+}
+
+.startup-hero p {
+    color: #bcb8ce;
+}
+
+.primary-btn {
+    border: none;
+
+    padding: 14px 22px;
+
+    border-radius: 11px;
+
+    color: white;
+
+    font-weight: 700;
+
+    background: linear-gradient(135deg,
+            #ff5db3,
+            #8b6cff);
+
+    box-shadow:
+        0 10px 25px rgba(154, 93, 255, 0.25);
+
+    transition: 0.3s ease;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(154, 93, 255, 0.35);
+}
+
+.startup-art {
+    width: 350px;
+
+    height: 350px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.startup-orbit {
+    position: absolute;
+
+    border: 1px solid rgba(255, 105, 184, 0.35);
+
+    border-radius: 50%;
+
+    animation: rotateOrbit 10s linear infinite;
+}
+
+.orbit-one {
+    width: 290px;
+
+    height: 290px;
+}
+
+.orbit-two {
+    width: 210px;
+
+    height: 210px;
+
+    animation-direction: reverse;
+
+    animation-duration: 7s;
+}
+
+.startup-center {
+    width: 145px;
+
+    height: 145px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg,
+            #ff63b5,
+            #8367ff);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 20px 60px rgba(255, 96, 180, 0.25);
+
+    z-index: 2;
+}
+
+.startup-center span {
+    font-size: 25px;
+}
+
+.startup-center b {
+    margin-top: 8px;
+
+    font-size: 15px;
+}
+
+.startup-center small {
+    margin-top: 5px;
+
+    font-size: 7px;
+
+    opacity: 0.8;
+}
+
+@keyframes rotateOrbit {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.startup-features {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin: 30px 0 70px;
+}
+
+.startup-features div {
+    padding: 22px;
+
+    background: white;
+
+    border-radius: 16px;
+
+    border: 1px solid #e5e1ef;
+
+    transition: 0.3s;
+}
+
+.startup-features div:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(70, 50, 110, 0.08);
+}
+
+.startup-features strong,
+.startup-features span {
+    display: block;
+}
+
+.startup-features span {
+    margin-top: 6px;
+
+    color: #858091;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   REMOTE PAGE
+========================================================= */
+
+.remote-hero {
+    min-height: 500px;
+
+    padding: 70px;
+
+    border-radius: 32px;
+
+    background: linear-gradient(135deg,
+            #152b43,
+            #173f58);
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    overflow: hidden;
+}
+
+.remote-copy {
+    width: 55%;
+}
+
+.remote-copy p {
+    color: #b8c9d4;
+}
+
+.remote-badges {
+    margin-top: 25px;
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.remote-badges span {
+    padding: 10px 14px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    font-size: 12px;
+}
+
+.remote-visual {
+    width: 40%;
+
+    height: 350px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.cloud {
+    position: absolute;
+
+    color: rgba(255, 255, 255, 0.2);
+
+    font-size: 50px;
+
+    animation: cloudMove 5s infinite ease-in-out;
+}
+
+.cloud-one {
+    top: 25px;
+
+    left: 20px;
+}
+
+.cloud-two {
+    bottom: 20px;
+
+    right: 10px;
+
+    animation-delay: 1.5s;
+}
+
+@keyframes cloudMove {
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.laptop-card {
+    width: 300px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    background: white;
+
+    color: #222;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.3);
+
+    transform: rotate(-3deg);
+
+    animation: floatingCard 4s infinite;
+}
+
+.laptop-top {
+    height: 30px;
+
+    padding-left: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    background: #eee;
+}
+
+.laptop-top span {
+    width: 7px;
+
+    height: 7px;
+
+    background: #aaa;
+
+    border-radius: 50%;
+}
+
+.laptop-screen {
+    padding: 35px;
+}
+
+.screen-logo {
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 13px;
+
+    background: linear-gradient(135deg,
+            #ff64b7,
+            #8767ff);
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: 800;
+
+    font-size: 22px;
+}
+
+.laptop-screen h3 {
+    margin: 20px 0 6px;
+}
+
+.laptop-screen p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+.screen-location {
+    margin-top: 25px;
+
+    padding: 11px;
+
+    border-radius: 9px;
+
+    background: #f4f2fa;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   COMPANIES PAGE
+========================================================= */
+
+.companies-hero {
+    padding: 70px;
+
+    border-radius: 32px;
+
+    background: #171432;
+
+    color: white;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.companies-hero::before,
+.companies-hero::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 99, 182, 0.2);
+}
+
+.companies-hero::before {
+    width: 300px;
+
+    height: 300px;
+
+    left: -100px;
+
+    top: -130px;
+}
+
+.companies-hero::after {
+    width: 250px;
+
+    height: 250px;
+
+    right: -80px;
+
+    bottom: -120px;
+}
+
+.companies-hero p {
+    margin: auto;
+
+    color: #aaa6bd;
+}
+
+.company-grid {
+    margin-top: 40px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.company-card {
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 21px;
+
+    border: 1px solid #e7e2f1;
+
+    transition: 0.35s ease;
+}
+
+.company-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 20px 45px rgba(55, 40, 90, 0.1);
+}
+
+.company-card-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.large-company-logo {
+    width: 58px;
+
+    height: 58px;
+
+    font-size: 24px;
+}
+
+.company-openings {
+    color: #805de5;
+
+    background: #f3efff;
+
+    padding: 7px 10px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+.company-card h3 {
+    margin: 20px 0 7px;
+
+    font-size: 21px;
+}
+
+.company-category {
+    color: #ff5eb2;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.company-card p {
+    color: #7c7788;
+
+    line-height: 1.6;
+
+    font-size: 13px;
+
+    min-height: 65px;
+}
+
+.company-card button {
+    width: 100%;
+
+    padding: 11px;
+
+    border: 1px solid #e4def2;
+
+    background: #faf8ff;
+
+    color: #7452d4;
+
+    border-radius: 9px;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+.company-card button:hover {
+    background: #f0eaff;
+}
+
+.company-bottom {
+    margin-top: 60px;
+
+    padding: 45px;
+
+    border-radius: 25px;
+
+    background: linear-gradient(135deg,
+            #ffeff8,
+            #f0ecff);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.company-bottom h2 {
+    margin: 10px 0;
+}
+
+.company-bottom p {
+    max-width: 650px;
+
+    color: #716c7d;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+.page-navigation {
+    padding: 35px 5%;
+
+    background: white;
+
+    border-top: 1px solid #e9e5f0;
+
+    border-bottom: 1px solid #e9e5f0;
+}
+
+.page-nav-inner {
+    max-width: 900px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.page-nav-inner>button {
+    border: none;
+
+    background: #f4f0ff;
+
+    color: #7454d5;
+
+    padding: 11px 17px;
+
+    border-radius: 9px;
+
+    font-weight: 700;
+}
+
+.page-nav-inner>button:disabled {
+    opacity: 0.35;
+
+    cursor: not-allowed;
+}
+
+.page-numbers {
+    display: flex;
+
+    gap: 8px;
+}
+
+.page-numbers button {
+    width: 38px;
+
+    height: 38px;
+
+    border: 1px solid #e5e1ed;
+
+    border-radius: 9px;
+
+    background: white;
+
+    color: #777;
+
+    transition: 0.3s;
+}
+
+.page-numbers button:hover,
+.page-numbers button.active {
+    background: linear-gradient(135deg,
+            #ff61b5,
+            #8667ff);
+
+    border-color: transparent;
+
+    color: white;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.jobs-footer {
+    padding: 55px 7%;
+
+    background: #15132d;
+
+    color: white;
+
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 25px;
+
+    font-weight: 800;
+}
+
+.footer-logo span {
+    color: #ff65b6;
+}
+
+.jobs-footer p {
+    color: #aaa6bc;
+
+    margin: 12px 0 25px;
+}
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 25px;
+}
+
+.footer-links button {
+    border: none;
+
+    background: transparent;
+
+    color: #c4c0d2;
+
+    padding: 7px 10px;
+}
+
+.footer-links button:hover {
+    color: #ff65b6;
+}
+
+.jobs-footer small {
+    color: #77738a;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.job-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 500;
+
+    background: rgba(10, 8, 25, 0.75);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    backdrop-filter: blur(7px);
+}
+
+.job-modal {
+    width: 100%;
+
+    max-width: 560px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background: white;
+
+    position: relative;
+
+    animation: modalOpen 0.3s ease;
+}
+
+@keyframes modalOpen {
+    from {
+        opacity: 0;
+
+        transform: translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+
+    right: 20px;
+
+    top: 18px;
+
+    width: 35px;
+
+    height: 35px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f2eff7;
+
+    color: #555;
+
+    font-size: 22px;
+}
+
+.modal-tag {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 6px 10px;
+
+    border-radius: 6px;
+
+    background: #f3edff;
+
+    color: #7857dc;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.job-modal h2 {
+    margin: 15px 0 5px;
+
+    font-size: 27px;
+}
+
+.job-modal h4 {
+    margin: 0;
+
+    color: #777;
+}
+
+.modal-details {
+    margin: 25px 0;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+.modal-details span {
+    padding: 12px;
+
+    border-radius: 9px;
+
+    background: #f7f5fb;
+
+    color: #666;
+
+    font-size: 12px;
+}
+
+.modal-description {
+    border-top: 1px solid #eee;
+
+    padding-top: 20px;
+}
+
+.modal-description h3 {
+    margin-bottom: 7px;
+}
+
+.modal-description p {
+    color: #777;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+.apply-btn {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: linear-gradient(135deg,
+            #ff5db3,
+            #8b6cff);
+
+    color: white;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .main-navbar {
+        padding: 0 4%;
+    }
+
+    .main-nav-links button {
+        padding: 9px 10px;
+
+        font-size: 13px;
+    }
+
+    .jobs-hero {
+        padding: 65px 5%;
+    }
+
+    .jobs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-job-preview {
+        width: 38%;
+    }
+
+    .big-job-visual {
+        width: 250px;
+    }
+
+    .different-hero,
+    .internship-hero,
+    .startup-hero,
+    .remote-hero {
+        padding: 50px;
+    }
+
+    .company-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 750px) {
+
+    /* MAIN NAV */
+
+    .main-navbar {
+        height: 70px;
+
+        padding: 0 5%;
+    }
+
+    .main-mobile-btn {
+        display: block;
+    }
+
+    .main-nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 70px;
+
+        left: 0;
+
+        right: 0;
+
+        padding: 12px;
+
+        background: #171432;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .main-nav-links.open {
+        display: flex;
+    }
+
+    .main-nav-links button {
+        width: 100%;
+
+        text-align: left;
+
+        padding: 13px;
+    }
+
+
+    /* JOB SUB NAV */
+
+    .jobs-subnav {
+        position: sticky;
+
+        top: 70px;
+    }
+
+    .jobs-subnav-inner {
+        justify-content: flex-start;
+
+        overflow-x: auto;
+
+        padding: 8px 5%;
+    }
+
+    .jobs-subnav-inner::-webkit-scrollbar {
+        display: none;
+    }
+
+    .jobs-subnav-inner button {
+        flex-shrink: 0;
+
+        font-size: 12px;
+    }
+
+
+    /* HERO */
+
+    .jobs-hero {
+        min-height: auto;
+
+        padding: 60px 6%;
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .jobs-hero-content {
+        width: 100%;
+    }
+
+    .jobs-hero h1 {
+        font-size: 48px;
+
+        letter-spacing: -2px;
+    }
+
+    .jobs-hero p {
+        font-size: 14px;
+    }
+
+
+    /* SEARCH */
+
+    .hero-search {
+        flex-direction: column;
+
+        padding: 8px;
+
+        align-items: stretch;
+    }
+
+    .search-field {
+        width: 100%;
+    }
+
+    .location-field {
+        border-left: none;
+
+        border-top: 1px solid #eee;
+    }
+
+    .hero-search button {
+        width: 100%;
+
+        min-width: 0;
+
+        white-space: nowrap;
+    }
+
+
+    /* HERO VISUAL */
+
+    .hero-job-preview {
+        width: 100%;
+
+        min-height: 350px;
+
+        margin-top: 30px;
+    }
+
+    .card-a {
+        left: 3%;
+    }
+
+    .card-b {
+        right: 3%;
+    }
+
+
+    /* GENERAL */
+
+    .jobs-section,
+    .inner-container {
+        padding: 55px 5%;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .jobs-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* LATEST */
+
+    .different-hero {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 40px 25px;
+    }
+
+    .different-hero h1 {
+        font-size: 45px;
+    }
+
+    .latest-stat-card {
+        width: 160px;
+
+        height: 160px;
+
+        margin: auto;
+    }
+
+    .latest-strip {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    /* INTERNSHIP */
+
+    .internship-hero {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 40px 25px;
+    }
+
+    .internship-text {
+        width: 100%;
+    }
+
+    .internship-text h1 {
+        font-size: 45px;
+    }
+
+    .internship-visual {
+        width: 100%;
+
+        margin-top: 30px;
+    }
+
+
+    /* STARTUP */
+
+    .startup-hero {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 40px 25px;
+    }
+
+    .startup-hero>div:first-child {
+        width: 100%;
+    }
+
+    .startup-hero h1 {
+        font-size: 45px;
+    }
+
+    .startup-art {
+        width: 100%;
+
+        margin-top: 30px;
+    }
+
+    .startup-features {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* REMOTE */
+
+    .remote-hero {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 40px 25px;
+    }
+
+    .remote-copy {
+        width: 100%;
+    }
+
+    .remote-copy h1 {
+        font-size: 45px;
+    }
+
+    .remote-visual {
+        width: 100%;
+
+        margin-top: 30px;
+    }
+
+
+    /* COMPANIES */
+
+    .companies-hero {
+        padding: 45px 25px;
+    }
+
+    .companies-hero h1 {
+        font-size: 45px;
+    }
+
+    .company-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .company-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 30px;
+    }
+
+
+    /* PAGE NUMBERS */
+
+    .page-nav-inner {
+        flex-direction: column;
+    }
+
+    .page-numbers {
+        order: -1;
+    }
+
+    .page-nav-inner>button {
+        width: 100%;
+    }
+
+
+    /* MODAL */
+
+    .modal-details {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .main-logo {
+        font-size: 21px;
+    }
+
+    .jobs-hero h1 {
+        font-size: 40px;
+    }
+
+    .jobs-hero p {
+        font-size: 13px;
+    }
+
+    .big-job-visual {
+        width: 230px;
+
+        padding: 22px;
+    }
+
+    .floating-mini-card {
+        padding: 10px;
+
+        font-size: 11px;
+    }
+
+    .floating-mini-card small {
+        font-size: 9px;
+    }
+
+    .card-a {
+        top: 25px;
+    }
+
+    .card-b {
+        bottom: 20px;
+    }
+
+    .different-hero h1,
+    .internship-text h1,
+    .startup-hero h1,
+    .remote-copy h1,
+    .companies-hero h1 {
+        font-size: 38px;
+    }
+
+    .page-numbers {
+        gap: 4px;
+    }
+
+    .page-numbers button {
+        width: 32px;
+
+        height: 32px;
+
+        font-size: 11px;
+    }
+
+    .jobs-footer {
+        padding: 45px 5%;
+    }
+
+    .job-modal {
+        padding: 25px;
+    }
+
+}

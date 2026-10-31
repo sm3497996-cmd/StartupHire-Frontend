@@ -1,0 +1,11 @@
+/* AUTO-GENERATED dark theme for CreateCompanyPage.css
+   Sirf [data-theme="dark"] mein chalta hai, light theme ko touch nahi karta.
+   Kisi rule ka dark look badalna ho to yahin edit karo. */
+
+:where([data-theme="dark"]) .cp-error {
+    color: #f3a5a5;
+}
+
+:where([data-theme="dark"]) .cp-logo-picked button {
+    color: #f3a5a5;
+}

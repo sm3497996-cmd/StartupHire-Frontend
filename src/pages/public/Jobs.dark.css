@@ -1,0 +1,252 @@
+/* AUTO-GENERATED dark theme for Jobs.css
+   Sirf [data-theme="dark"] mein chalta hai, light theme ko touch nahi karta.
+   Kisi rule ka dark look badalna ho to yahin edit karo. */
+
+:where([data-theme="dark"]) .jobs-page {
+    background: #141024;
+    color: #d6d5e3;
+}
+
+:where([data-theme="dark"]) .hero-search {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .search-field {
+    color: #9099ae;
+}
+
+:where([data-theme="dark"]) .search-field input {
+    color: #d5d8e0;
+}
+
+:where([data-theme="dark"]) .location-field {
+    border-left: 1px solid #33303c;
+}
+
+:where([data-theme="dark"]) .floating-mini-card {
+    background: #151821;
+    color: #d5d8e0;
+}
+
+:where([data-theme="dark"]) .floating-mini-card span {
+    background: #1d132b;
+}
+
+:where([data-theme="dark"]) .section-heading p {
+    color: #8a94aa;
+}
+
+:where([data-theme="dark"]) .result-count {
+    color: #8a94aa;
+}
+
+:where([data-theme="dark"]) .category {
+    border: 1px solid #332e41;
+    background: #151821;
+    color: #9ca4b7;
+}
+
+:where([data-theme="dark"]) .category:hover,
+:where([data-theme="dark"]) .category.active {
+    border-color: #433868;
+}
+
+:where([data-theme="dark"]) .job-card {
+    background: #151821;
+    border: 1px solid #322b40;
+}
+
+:where([data-theme="dark"]) .job-card:hover {
+    border-color: #30284b;
+}
+
+:where([data-theme="dark"]) .company-logo,
+:where([data-theme="dark"]) .large-company-logo {
+    background: #130f21;
+    color: #bdaeea;
+}
+
+:where([data-theme="dark"]) .save-btn {
+    border: 1px solid #322b3e;
+    background: #151821;
+    color: #9099ae;
+}
+
+:where([data-theme="dark"]) .save-btn:hover,
+:where([data-theme="dark"]) .save-btn.saved {
+    border-color: #502b3d;
+    background: #220f19;
+}
+
+:where([data-theme="dark"]) .job-tag {
+    background: #160f22;
+}
+
+:where([data-theme="dark"]) .company-name {
+    color: #929bb0;
+}
+
+:where([data-theme="dark"]) .job-info {
+    color: #8993aa;
+}
+
+:where([data-theme="dark"]) .job-bottom {
+    border-top: 1px solid #312a3d;
+}
+
+:where([data-theme="dark"]) .no-results {
+    background: #151821;
+    border: 1px solid #342d41;
+}
+
+:where([data-theme="dark"]) .no-results p {
+    color: #9099ae;
+}
+
+:where([data-theme="dark"]) .latest-page {
+    background: #130f22;
+}
+
+:where([data-theme="dark"]) .internship-page {
+    background: #25101b;
+}
+
+:where([data-theme="dark"]) .startup-page {
+    background: #101424;
+}
+
+:where([data-theme="dark"]) .remote-page {
+    background: #0f1b21;
+}
+
+:where([data-theme="dark"]) .companies-page {
+    background: #151025;
+}
+
+:where([data-theme="dark"]) .pulse-dot {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .latest-strip {
+    background: #151821;
+    border: 1px solid #2f2646;
+}
+
+:where([data-theme="dark"]) .latest-strip button {
+    background: #140e20;
+    color: #bdaeea;
+}
+
+:where([data-theme="dark"]) .visual-note {
+    background: #151821;
+    color: #baafbd;
+}
+
+:where([data-theme="dark"]) .startup-features div {
+    background: #151821;
+    border: 1px solid #332d41;
+}
+
+:where([data-theme="dark"]) .laptop-card {
+    background: #151821;
+    color: #d5d8e0;
+}
+
+:where([data-theme="dark"]) .laptop-top {
+    background: #1b202b;
+}
+
+:where([data-theme="dark"]) .laptop-screen p {
+    color: #9099ae;
+}
+
+:where([data-theme="dark"]) .screen-location {
+    background: #14101f;
+}
+
+:where([data-theme="dark"]) .company-card {
+    background: #151821;
+    border: 1px solid #322b41;
+}
+
+:where([data-theme="dark"]) .company-openings {
+    background: #140f22;
+}
+
+:where([data-theme="dark"]) .company-card button {
+    border: 1px solid #312945;
+    background: #161025;
+    color: #bfb0e8;
+}
+
+:where([data-theme="dark"]) .company-card button:hover {
+    background: #1a132b;
+}
+
+:where([data-theme="dark"]) .company-bottom {
+    background: linear-gradient(135deg,
+            #220f19,
+            #120e20);
+}
+
+:where([data-theme="dark"]) .company-bottom p {
+    color: #929bb0;
+}
+
+:where([data-theme="dark"]) .page-navigation {
+    background: #151821;
+    border-top: 1px solid #332d3e;
+    border-bottom: 1px solid #332d3e;
+}
+
+:where([data-theme="dark"]) .page-nav-inner>button {
+    background: #140f22;
+    color: #beb0e8;
+}
+
+:where([data-theme="dark"]) .page-numbers button {
+    border: 1px solid #352f40;
+    background: #151821;
+    color: #9099ae;
+}
+
+:where([data-theme="dark"]) .jobs-footer small {
+    color: #8993aa;
+}
+
+:where([data-theme="dark"]) .job-modal {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .modal-close {
+    background: #1e1827;
+    color: #abb2c2;
+}
+
+:where([data-theme="dark"]) .modal-tag {
+    background: #150f21;
+    color: #bdaeea;
+}
+
+:where([data-theme="dark"]) .job-modal h4 {
+    color: #9099ae;
+}
+
+:where([data-theme="dark"]) .modal-details span {
+    background: #161120;
+    color: #9da5b8;
+}
+
+:where([data-theme="dark"]) .modal-description {
+    border-top: 1px solid #29303e;
+}
+
+:where([data-theme="dark"]) .modal-description p {
+    color: #9099ae;
+}
+
+@media (max-width: 750px) {
+    :where([data-theme="dark"]) .location-field {
+        border-top: 1px solid #29303e;
+    }
+}

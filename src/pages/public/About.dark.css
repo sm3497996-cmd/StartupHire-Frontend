@@ -1,0 +1,160 @@
+/* AUTO-GENERATED dark theme for About.css
+   Sirf [data-theme="dark"] mein chalta hai, light theme ko touch nahi karta.
+   Kisi rule ka dark look badalna ho to yahin edit karo. */
+
+:where([data-theme="dark"]) .ap-page {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .ap-navbar {
+    background: rgba(21, 24, 33, 0.85);
+}
+
+:where([data-theme="dark"]) .ap-logo-dot {
+    color: #f1a7cc;
+}
+
+:where([data-theme="dark"]) .ap-navbar-links a {
+    color: #d8dae7;
+}
+
+:where([data-theme="dark"]) .ap-navbar-links a:hover {
+    color: #c2a6f2;
+}
+
+:where([data-theme="dark"]) .ap-badge {
+    background: rgba(21, 24, 33, 0.82);
+    color: #9ab5f0;
+}
+
+:where([data-theme="dark"]) .ap-hero3-wrap {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .ap-hero3-eyebrow {
+    color: #99e6f2;
+}
+
+:where([data-theme="dark"]) .ap-story {
+    background: linear-gradient(180deg,
+            #151821,
+            #101325);
+}
+
+:where([data-theme="dark"]) .ap-story-image-wrap::before {
+    background: linear-gradient(135deg,
+            #251e42,
+            #4a2137);
+}
+
+:where([data-theme="dark"]) .ap-image-label {
+    background: rgba(21, 24, 33, 0.94);
+}
+
+:where([data-theme="dark"]) .ap-eyebrow {
+    color: #c2a6f2;
+}
+
+:where([data-theme="dark"]) .ap-story-modern-copy h3 span {
+    color: #f1a7cc;
+}
+
+:where([data-theme="dark"]) .ap-story-modern-copy p {
+    color: #8c95ac;
+}
+
+:where([data-theme="dark"]) .ap-story-highlight {
+    background: #151821;
+    border: 1px solid #282f3c;
+}
+
+:where([data-theme="dark"]) .ap-pillars {
+    background: linear-gradient(180deg,
+            #101025,
+            #151821);
+}
+
+:where([data-theme="dark"]) .ap-cta {
+    background: linear-gradient(135deg,
+            #131023,
+            #0f1c21,
+            #230f18);
+}
+
+:where([data-theme="dark"]) .ap-cta-orb-2 {
+    background: #4a2137;
+}
+
+:where([data-theme="dark"]) .ap-cta-badge {
+    background: #151821;
+    color: #c2a6f2;
+}
+
+:where([data-theme="dark"]) .ap-cta p {
+    color: #969ba5;
+}
+
+:where([data-theme="dark"]) .ap-btn-ghost-dark {
+    border: 1px solid #373c47;
+    background: #151821;
+    color: #d4d6e2;
+}
+
+:where([data-theme="dark"]) .ap-footer-bottom p {
+    color: #919aaf;
+}
+
+:where([data-theme="dark"]) .ap-cta {
+    background: radial-gradient(circle at 8% 15%,
+            rgba(124, 58, 237, 0.16),
+            transparent 30%),
+        radial-gradient(circle at 92% 80%,
+            rgba(236, 72, 153, 0.18),
+            transparent 32%),
+        linear-gradient(135deg,
+            #101424 0%,
+            #0f1b21 48%,
+            #25101c 100%);
+}
+
+:where([data-theme="dark"]) .ap-cta-badge {
+    background: rgba(21, 24, 33, 0.86);
+    color: #bda8f0;
+}
+
+:where([data-theme="dark"]) .ap-cta h2 {
+    color: #d8dae7;
+}
+
+:where([data-theme="dark"]) .ap-cta p {
+    color: #959aa6;
+}
+
+:where([data-theme="dark"]) .ap-cta .ap-btn-ghost-dark {
+    color: #d4d7e2;
+    background: rgba(21, 24, 33, 0.82);
+}
+
+:where([data-theme="dark"]) .ap-cta-bottom strong {
+    color: #cccfdb;
+}
+
+:where([data-theme="dark"]) .ap-cta-avatar-stack span {
+    background: #151821;
+    border: 3px solid #232834;
+}
+
+:where([data-theme="dark"]) .ap-cta-floating {
+    background: rgba(21, 24, 33, 0.9);
+    border: 1px solid rgba(35, 40, 52, 0.8);
+}
+
+:where([data-theme="dark"]) .ap-cta-floating>span {
+    background: linear-gradient(135deg,
+            #0f1321,
+            #2d1422);
+}
+
+:where([data-theme="dark"]) .ap-cta-floating strong {
+    color: #d3d5e1;
+}

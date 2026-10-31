@@ -1,0 +1,506 @@
+/* =========================================================
+   PROFILE EDITORS  (chips + contact/links)  -  blue / pink / orange theme
+========================================================= */
+
+.pe-field,
+.pe-contact,
+.pe-view {
+    --pe-g: linear-gradient(135deg, #3b82f6, #6366f1);
+    --pe-tx: #1b1630;
+    --pe-mu: #6b7596;
+    --pe-bd: #dfe5f6;
+    color: var(--pe-tx);
+    font-family: inherit;
+}
+
+.pe-field *,
+.pe-contact *,
+.pe-view * {
+    box-sizing: border-box;
+}
+
+.pe-label {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--pe-mu);
+}
+
+.pe-gap {
+    margin-top: 18px;
+}
+
+.pe-sub {
+    margin: 16px 0 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #3b4766;
+}
+
+.pe-count {
+    margin: 12px 0 0;
+    font-size: 12px;
+    color: #8a93b0;
+}
+
+.pe-empty {
+    margin: 0;
+    font-size: 14px;
+    color: #8a93b0;
+}
+
+/* ---------- Search box ---------- */
+
+.pe-search,
+.pe-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    min-height: 46px;
+    border-radius: 14px;
+    border: 1px solid var(--pe-bd);
+    background: #fff;
+    color: #8a93b0;
+    transition: 0.15s;
+}
+
+.pe-search:focus-within,
+.pe-wrap:focus-within {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.14);
+}
+
+.pe-wrap.err {
+    border-color: #e5484d;
+    box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.1);
+}
+
+.pe-search input,
+.pe-wrap input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 14px;
+    color: var(--pe-tx);
+}
+
+.pe-search input::placeholder,
+.pe-wrap input::placeholder {
+    color: #94a0bd;
+}
+
+.pe-addtxt {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border: 0;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(90deg, #fa7e1e, #d62976);
+    box-shadow: 0 6px 14px rgba(214, 41, 118, 0.28);
+}
+
+/* ---------- Chips ---------- */
+
+.pe-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 14px;
+}
+
+.pe-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    animation: pe-pop 0.18s ease;
+}
+
+/* selected */
+.pe-chip.on {
+    color: #fff;
+    background: var(--pe-g);
+    box-shadow: 0 6px 14px rgba(79, 70, 229, 0.28);
+}
+
+.pe-chip.on button {
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.pe-chip.on button:hover {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+/* suggestion (+) */
+.pe-chip.off {
+    cursor: pointer;
+    color: #3b4766;
+    background: #fff;
+    border-color: var(--pe-bd);
+    transition: 0.15s;
+}
+
+.pe-chip.off svg {
+    color: #8a93b0;
+    transition: 0.15s;
+}
+
+.pe-chip.off:hover {
+    border-color: #d62976;
+    color: #d62976;
+    transform: translateY(-1px);
+}
+
+.pe-chip.off:hover svg {
+    color: #d62976;
+}
+
+.pe-chip.off:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* read-only chips (card ke andar) */
+.pe-chip.tone0 {
+    background: #eceeff;
+    color: #4338ca;
+}
+
+.pe-chip.tone1 {
+    background: #ffe8f1;
+    color: #be185d;
+}
+
+.pe-chip.tone2 {
+    background: #fff0dd;
+    color: #b4540a;
+}
+
+.pe-chip.tone3 {
+    background: #e0f2ff;
+    color: #0369a1;
+}
+
+.pe-chips .pe-chip.tone0,
+.pe-chips .pe-chip.tone1,
+.pe-chips .pe-chip.tone2,
+.pe-chips .pe-chip.tone3 {
+    padding: 8px 14px;
+    font-size: 13px;
+    animation: none;
+}
+
+@keyframes pe-pop {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+/* ---------- Contact / links editor ---------- */
+
+.pe-grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.pe-links {
+    display: grid;
+    gap: 10px;
+}
+
+.pe-link {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pe-link select {
+    flex: none;
+    width: 130px;
+    min-height: 46px;
+    padding: 0 10px;
+    border-radius: 14px;
+    border: 1px solid var(--pe-bd);
+    background: #fff;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pe-tx);
+    outline: 0;
+}
+
+.pe-wrap.grow {
+    flex: 1;
+    min-width: 180px;
+}
+
+.pe-badge {
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.pe-del {
+    flex: none;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--pe-bd);
+    background: #fff;
+    color: #8a93b0;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.pe-del:hover {
+    color: #e5484d;
+    border-color: #e5484d;
+    background: #fff1f1;
+}
+
+.pe-err {
+    display: block;
+    margin-top: 6px;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 600;
+    color: #e5484d;
+}
+
+.pe-err.full {
+    width: 100%;
+    margin: -2px 0 0 42px;
+}
+
+.pe-quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.pe-add {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px dashed #b9c3e6;
+    background: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    color: #4f46e5;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.pe-add:hover {
+    border-color: #d62976;
+    color: #d62976;
+    transform: translateY(-1px);
+}
+
+.pe-add.ghost {
+    color: #6b7596;
+}
+
+/* ---------- View (card ke andar) ---------- */
+
+.pe-view {
+    display: grid;
+    gap: 14px;
+}
+
+.pe-rows {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 10px;
+}
+
+.pe-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--pe-tx);
+    background: #eef2ff;
+    transition: 0.15s;
+}
+
+.pe-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.15);
+}
+
+.pe-ico {
+    flex: none;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #fff;
+    color: #4f46e5;
+}
+
+.pe-row small {
+    display: block;
+    font-size: 12px;
+    color: var(--pe-mu);
+}
+
+.pe-row b {
+    display: block;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+.pe-lchips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.pe-lchip {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 6px 14px 6px 6px;
+    border-radius: 999px;
+    border: 1px solid var(--pe-bd);
+    background: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pe-tx);
+    transition: 0.15s;
+}
+
+.pe-lchip:hover {
+    border-color: #6366f1;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(79, 70, 229, 0.15);
+}
+
+/* ---------- Dark mode ---------- */
+
+body.candidate-dark .pe-field,
+body.candidate-dark .pe-contact,
+body.candidate-dark .pe-view {
+    --pe-tx: #eef2ff;
+    --pe-mu: #a9b4d6;
+    --pe-bd: rgba(255, 255, 255, 0.16);
+}
+
+body.candidate-dark .pe-search,
+body.candidate-dark .pe-wrap,
+body.candidate-dark .pe-link select,
+body.candidate-dark .pe-del,
+body.candidate-dark .pe-add,
+body.candidate-dark .pe-chip.off,
+body.candidate-dark .pe-lchip {
+    background: rgba(255, 255, 255, 0.07);
+    color: #dbe3ff;
+}
+
+body.candidate-dark .pe-row {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+body.candidate-dark .pe-ico {
+    background: rgba(255, 255, 255, 0.12);
+    color: #c7d2fe;
+}
+
+body.candidate-dark .pe-sub {
+    color: #cdd6f0;
+}
+
+@media (max-width: 560px) {
+    .pe-grid2 {
+        grid-template-columns: 1fr;
+    }
+
+    .pe-link select {
+        width: 110px;
+    }
+}
+
+/* ---------- Compact (side column) ---------- */
+
+.pe-contact.compact .pe-grid2 {
+    grid-template-columns: 1fr;
+}
+
+.pe-contact.compact .pe-link select {
+    flex: 1;
+    width: auto;
+}
+
+.pe-contact.compact .pe-link .pe-del {
+    order: 2;
+}
+
+.pe-contact.compact .pe-link .pe-wrap.grow {
+    order: 3;
+    flex: 1 1 100%;
+}
+
+.pe-contact.compact .pe-err.full {
+    order: 4;
+    margin-left: 0;
+}
+
+/* ---------- Existing .cp-edit-box ke input/textarea styles se bachav ---------- */
+
+.cp-edit-box .pe-search input,
+.cp-edit-box .pe-wrap input {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}

@@ -1,0 +1,44 @@
+/* AUTO-GENERATED dark theme for CompanyProfileBlue.css
+   Sirf [data-theme="dark"] mein chalta hai, light theme ko touch nahi karta.
+   Kisi rule ka dark look badalna ho to yahin edit karo. */
+
+:where([data-theme="dark"]) .employer-app .cp-page .cp-hero,
+:where([data-theme="dark"]) .employer-app .cp-page .cp-card,
+:where([data-theme="dark"]) .employer-app .cp-page .cp-stat {
+    background: linear-gradient(160deg, #151821 0%, #101523 100%) !important;
+    border: 1px solid rgba(35, 40, 52, 0.6) !important;
+}
+
+:where([data-theme="dark"]) .employer-app .cp-page .cp-fact,
+:where([data-theme="dark"]) .employer-app .cp-page .cp-value,
+:where([data-theme="dark"]) .employer-app .cp-page .cp-mission>div {
+    background: #131a2b !important;
+}
+
+:where([data-theme="dark"]) .employer-app .cp-page .cp-benefit,
+:where([data-theme="dark"]) .employer-app .cp-page .cp-job,
+:where([data-theme="dark"]) .employer-app .cp-page .cp-member {
+    background: #151821 !important;
+    border-color: #242c43 !important;
+}
+
+:where([data-theme="dark"]) .employer-app .cp-page .cp-tabs {
+    background: #151821 !important;
+    border: 1px solid #242c43 !important;
+}
+
+:where([data-theme="dark"]) .employer-app .cp-page .cp-tab {
+    color: #8f98ae;
+}
+
+:where([data-theme="dark"]) .employer-app .cp-page .cp-tab:hover {
+    color: #c9c8e0;
+}
+
+:where([data-theme="dark"]) .employer-app .cp-page .cp-tab em {
+    color: #a5b3f3;
+}
+
+:where([data-theme="dark"]) .employer-app .cp-page .cp-bar {
+    background: #141b2e;
+}

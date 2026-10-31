@@ -1,0 +1,73 @@
+/* AUTO-GENERATED dark theme for CompanyProfileLayout.css
+   Sirf [data-theme="dark"] mein chalta hai, light theme ko touch nahi karta.
+   Kisi rule ka dark look badalna ho to yahin edit karo. */
+
+:where([data-theme="dark"]) .cp-page .cp-card {
+    background: radial-gradient(340px 190px at 100% 0%, var(--tint), transparent 70%),
+        radial-gradient(280px 170px at 0% 100%, rgba(236, 72, 153, 0.08), transparent 70%),
+        #151821 !important;
+}
+
+:where([data-theme="dark"]) .cp-page .cp-card-head h3 {
+    color: #cccbe4;
+}
+
+:where([data-theme="dark"]) .cp-page .cp-fact {
+    background: linear-gradient(135deg, var(--fbg), #151821 85%) !important;
+}
+
+:where([data-theme="dark"]) .cp-page .cp-fact strong {
+    color: #cccbe4;
+}
+
+:where([data-theme="dark"]) .cp-page .cp-benefit {
+    background: linear-gradient(135deg, var(--bt), #151821 80%) !important;
+}
+
+:where([data-theme="dark"]) .cp-page .cp-benefit>strong {
+    color: #cccbe4;
+}
+
+:where([data-theme="dark"]) .cp-page .cp-tags span {
+    border: 1px solid #272f48 !important;
+    background: #131b2c !important;
+    color: #a5ade9 !important;
+}
+
+:where([data-theme="dark"]) .cp-page .cp-tags span:nth-child(4n + 2) {
+    background: #2c131e !important;
+    color: #e56c9e !important;
+    border-color: #472633 !important;
+}
+
+:where([data-theme="dark"]) .cp-page .cp-tags span:nth-child(4n + 3) {
+    background: #302415 !important;
+    color: #ec924d !important;
+    border-color: #53422d !important;
+}
+
+:where([data-theme="dark"]) .cp-page .cp-tags span:nth-child(4n + 4) {
+    background: #1c142c !important;
+    color: #b595e7 !important;
+    border-color: #322749 !important;
+}
+
+:where([data-theme="dark"]) .cp-page .cp-mission>div {
+    background: linear-gradient(135deg, #131c2c, #151821 85%);
+}
+
+:where([data-theme="dark"]) .cp-page .cp-mission>div:nth-child(2) {
+    background: linear-gradient(135deg, #2c131d, #151821 85%);
+}
+
+:where([data-theme="dark"]) .cp-page .cp-mission b {
+    color: #cccbe4;
+}
+
+:where([data-theme="dark"]) .cp-zero b {
+    color: #ada9ef;
+}
+
+:where([data-theme="dark"]) .cp-page .cp-checklist li.done {
+    color: #cccbe4;
+}

@@ -1,0 +1,343 @@
+/* AUTO-GENERATED dark theme for CandidateLanding.css
+   Sirf [data-theme="dark"] mein chalta hai, light theme ko touch nahi karta.
+   Kisi rule ka dark look badalna ho to yahin edit karo. */
+
+:where([data-theme="dark"]) .candidate-page {
+    color: #c4d2e4;
+    background: #101625;
+}
+
+:where([data-theme="dark"]) .candidate-nav {
+    background: #151821;
+    border-bottom: 1px solid #262d3d;
+}
+
+:where([data-theme="dark"]) .candidate-logo,
+:where([data-theme="dark"]) .footer-logo {
+    color: #9eb2fa;
+}
+
+:where([data-theme="dark"]) .profile-btn {
+    border: 1px solid #2a3245 !important;
+    background: #151821;
+    color: #c2ccde;
+}
+
+:where([data-theme="dark"]) .small-badge {
+    border: 1px solid rgba(55, 67, 103, 0.5);
+}
+
+:where([data-theme="dark"]) .light-badge {
+    background: #0f1321;
+    border-color: #262b46;
+}
+
+:where([data-theme="dark"]) .hero-search {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .jobs-section {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .job-filters select {
+    border: 1px solid #2d3340;
+    color: #969ca8;
+}
+
+:where([data-theme="dark"]) .check-item {
+    color: #959ba6;
+}
+
+:where([data-theme="dark"]) .reset-btn {
+    color: #9099ae;
+}
+
+:where([data-theme="dark"]) .job-tabs button {
+    background: #12141f;
+    color: #959aa5;
+}
+
+:where([data-theme="dark"]) .job-row {
+    border: 1px solid #282f3c;
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .job-row:hover {
+    border-color: #272646;
+}
+
+:where([data-theme="dark"]) .match {
+    background: #142d25;
+    color: #45e1b8;
+}
+
+:where([data-theme="dark"]) .create-job-alert {
+    background: #101224;
+    color: #959aa6;
+}
+
+:where([data-theme="dark"]) .recommend-bottom span {
+    color: #aeeae0;
+}
+
+:where([data-theme="dark"]) .journey-step.active>div {
+    border-color: #65364c;
+}
+
+:where([data-theme="dark"]) .available {
+    color: #afe9dd;
+}
+
+:where([data-theme="dark"]) .resume-card>button {
+    background: #151821;
+    color: #aeb5c3;
+}
+
+:where([data-theme="dark"]) .career-section {
+    background: radial-gradient(circle at 85% 30%, rgba(109, 83, 255, .14), transparent 30%),
+        #101625;
+}
+
+:where([data-theme="dark"]) .career-points span {
+    background: #17132b;
+}
+
+:where([data-theme="dark"]) .career-points p {
+    color: #aab1bf;
+}
+
+:where([data-theme="dark"]) .career-image-circle {
+    background: linear-gradient(135deg, #1c353e, #1c1835);
+}
+
+:where([data-theme="dark"]) .dream-note {
+    color: #aea5f3;
+}
+
+:where([data-theme="dark"]) .testimonial {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .testimonial p {
+    color: #959ba7;
+}
+
+:where([data-theme="dark"]) .applications-section {
+    background: radial-gradient(circle at 85% 15%,
+            rgba(180, 76, 255, 0.10),
+            transparent 25%),
+        radial-gradient(circle at 10% 90%,
+            rgba(255, 91, 154, 0.08),
+            transparent 25%),
+        #101025 !important;
+    color: #c8cfe0 !important;
+}
+
+:where([data-theme="dark"]) .applications-heading h2 {
+    color: #c8cfe0 !important;
+}
+
+:where([data-theme="dark"]) .applications-heading p {
+    color: #959aa6 !important;
+}
+
+:where([data-theme="dark"]) .applications-section .applications-card {
+    background: rgba(21, 24, 33, 0.95) !important;
+    border-color: #2f2e3e !important;
+}
+
+:where([data-theme="dark"]) .recent-title h3 {
+    color: #c8cfe0 !important;
+}
+
+:where([data-theme="dark"]) .application-info strong {
+    color: #c8cfe0 !important;
+}
+
+:where([data-theme="dark"]) .application-info small {
+    color: #959aa6 !important;
+}
+
+:where([data-theme="dark"]) .application-time {
+    color: #959aa6 !important;
+}
+
+:where([data-theme="dark"]) .recent-application,
+:where([data-theme="dark"]) .recent-title {
+    border-color: #2f2e3e !important;
+}
+
+:where([data-theme="dark"]) .journey-step strong {
+    color: #c8cfe0 !important;
+}
+
+:where([data-theme="dark"]) .status-0 {
+    color: #e8c08b !important;
+}
+
+:where([data-theme="dark"]) .status-1 {
+    color: #c8a9ef !important;
+}
+
+:where([data-theme="dark"]) .status-2 {
+    color: #4fe5df !important;
+}
+
+:where([data-theme="dark"]) .status-3 {
+    color: #b5bbe3 !important;
+}
+
+:where([data-theme="dark"]) .applications-heading h2 {
+    color: #d7dce6 !important;
+}
+
+:where([data-theme="dark"]) .applications-heading p {
+    color: #bcc1ca !important;
+}
+
+:where([data-theme="dark"]) .recent-title h3 {
+    color: #d7dce6 !important;
+}
+
+:where([data-theme="dark"]) .application-info strong {
+    color: #d7dce6 !important;
+}
+
+:where([data-theme="dark"]) .application-info small {
+    color: #bcc1ca !important;
+}
+
+:where([data-theme="dark"]) .application-time {
+    color: #bcc1ca !important;
+}
+
+:where([data-theme="dark"]) .journey-step strong {
+    color: #d7dce6 !important;
+}
+
+:where([data-theme="dark"]) .journey-step small {
+    color: #afb4bb !important;
+}
+
+:where([data-theme="dark"]) .applications-heading h2 {
+    color: #c8ccdd !important;
+}
+
+:where([data-theme="dark"]) .applications-heading p {
+    color: #acb1bb !important;
+}
+
+:where([data-theme="dark"]) .meet-candidates-section {
+    background: #101025;
+}
+
+:where([data-theme="dark"]) .meet-candidates-heading .small-badge {
+    background: #17132b;
+}
+
+:where([data-theme="dark"]) .meet-candidates-heading h2 {
+    color: #c7ccdd;
+}
+
+:where([data-theme="dark"]) .meet-candidates-heading p {
+    color: #a1a5ae;
+}
+
+:where([data-theme="dark"]) .candidate-profile-card {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .candidate-profile-image {
+    background: #1b202b;
+}
+
+:where([data-theme="dark"]) .available-dot {
+    background: rgba(21, 24, 33, 0.92);
+    color: #c5cad5;
+}
+
+:where([data-theme="dark"]) .candidate-profile-name h3 {
+    color: #c8cbda;
+}
+
+:where([data-theme="dark"]) .candidate-profile-name p {
+    color: #8a94aa;
+}
+
+:where([data-theme="dark"]) .candidate-skills span {
+    background: #12141c;
+    color: #aaaeb9;
+}
+
+:where([data-theme="dark"]) .candidate-view-btn {
+    border: 1px solid #31333d;
+    background: #151821;
+    color: #c1c5d3;
+}
+
+:where([data-theme="dark"]) .no-job-results {
+    background: #151821;
+    border: 1px solid #2c2d3d;
+}
+
+:where([data-theme="dark"]) .no-job-results h3 {
+    color: #c8ccdd;
+}
+
+:where([data-theme="dark"]) .job-modal {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .job-modal-close {
+    background: #181a26;
+}
+
+:where([data-theme="dark"]) .job-modal-close:hover {
+    background: #18142d;
+}
+
+:where([data-theme="dark"]) .modal-match {
+    background: #132b22;
+    color: #4ddeb8;
+}
+
+:where([data-theme="dark"]) .job-modal h2 {
+    color: #c9cfe0;
+}
+
+:where([data-theme="dark"]) .modal-company {
+    color: #959aa6;
+}
+
+:where([data-theme="dark"]) .modal-job-info span {
+    background: #131023;
+    color: #a59ed7;
+}
+
+:where([data-theme="dark"]) .modal-description {
+    border-top: 1px solid #2c2c3a;
+}
+
+:where([data-theme="dark"]) .modal-description h3 {
+    color: #c8ccdd;
+}
+
+:where([data-theme="dark"]) .modal-description p {
+    color: #959aa6;
+}
+
+:where([data-theme="dark"]) .modal-save-btn {
+    background: #1a1826;
+    color: #bdc2ce;
+}
+
+:where([data-theme="dark"]) .modal-save-btn:hover {
+    background: #17142d;
+}
+
+:where([data-theme="dark"]) .candidate-nav .back-home-btn {
+    border: 1px solid #252a45;
+    background: linear-gradient(135deg, #0f1222, #151821);
+    color: #b3adeb;
+}

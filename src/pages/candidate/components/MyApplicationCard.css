@@ -1,0 +1,610 @@
+/* ==========================================
+   MY APPLICATION CARD — MODERN DESIGN
+========================================== */
+
+.ap-card {
+    --ap-g: linear-gradient(90deg,
+            #feda75,
+            #fa7e1e,
+            #d62976,
+            #962fbf,
+            #4f5bd5);
+
+    --ap-c: #6366f1;
+    --ap-cbg: #eef0ff;
+
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 24px;
+    border-radius: 22px;
+    color: #20233a;
+    background: #ffffff;
+    border: 1px solid #e7e9f5;
+    box-shadow: 0 8px 28px rgba(35, 45, 100, 0.08);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+    box-sizing: border-box;
+}
+
+.ap-card:hover {
+    box-shadow: 0 14px 35px rgba(35, 45, 100, 0.13);
+    transform: translateY(-2px);
+}
+
+.ap-card * {
+    box-sizing: border-box;
+}
+
+.ap-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--ap-g);
+}
+
+/* Status colours */
+
+.st-applied {
+    --ap-c: #625cf5;
+    --ap-cbg: #efefff;
+}
+
+.st-shortlisted {
+    --ap-c: #ed8a21;
+    --ap-cbg: #fff3e3;
+}
+
+.st-selected {
+    --ap-c: #109d68;
+    --ap-cbg: #e1f8ed;
+}
+
+.st-rejected {
+    --ap-c: #e5484d;
+    --ap-cbg: #ffeded;
+}
+
+/* ==========================================
+   COMPANY AND JOB HEADER
+========================================== */
+
+.ap-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.ap-av {
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+
+    background: linear-gradient(135deg,
+            #4776f5,
+            #7551e9,
+            #d62976);
+
+    box-shadow: 0 6px 16px rgba(99, 82, 220, 0.22);
+}
+
+.ap-who {
+    flex: 1;
+    min-width: 0;
+}
+
+.ap-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: -0.3px;
+    overflow-wrap: anywhere;
+    color: #20233a;
+}
+
+.ap-co {
+    margin: 4px 0 0;
+    color: #68728d;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ap-pill {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 13px;
+    border-radius: 999px;
+    color: var(--ap-c);
+    background: var(--ap-cbg);
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.ap-pill i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* Applied date */
+
+.ap-when {
+    margin: 14px 0 0;
+    color: #7a849f;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.ap-when span {
+    color: #939bb1;
+}
+
+/* ==========================================
+   JOB INFORMATION
+========================================== */
+
+.ap-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 15px;
+}
+
+.ap-chips span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: #4b5675;
+    background: #f4f6fc;
+    font-size: 12px;
+    font-weight: 650;
+    overflow-wrap: anywhere;
+}
+
+.ap-chips svg {
+    flex: none;
+    color: #655cf2;
+}
+
+/* ==========================================
+   APPLICATION ACTIVITY
+========================================== */
+
+.ap-log {
+    list-style: none;
+    margin: 19px 0 0;
+    padding: 17px;
+    border: 1px solid #edf0fa;
+    border-radius: 16px;
+    background: #f7f8fd;
+    display: grid;
+    gap: 17px;
+}
+
+.ap-log li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    min-width: 0;
+}
+
+.ap-dot {
+    flex: 0 0 19px;
+    width: 19px;
+    height: 19px;
+    margin-top: 1px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    background: #d2d9eb;
+}
+
+.ev-done .ap-dot {
+    background: #12b878;
+}
+
+.ev-bad .ap-dot {
+    background: #e5484d;
+}
+
+.ap-log li>div {
+    min-width: 0;
+}
+
+.ap-log b {
+    display: block;
+    color: #303750;
+    font-size: 13px;
+    font-weight: 750;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.ap-log small {
+    display: block;
+    margin-top: 4px;
+    color: #8490ad;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.ev-wait b {
+    color: #64708f;
+    font-weight: 650;
+}
+
+/* ==========================================
+   APPLICATION PROGRESS
+========================================== */
+
+.ap-steps {
+    display: flex;
+    margin: 24px 5px 8px;
+}
+
+.ap-step {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    color: #8a93ad;
+    text-align: center;
+}
+
+.ap-step small {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.ap-node {
+    position: relative;
+    z-index: 2;
+    width: 15px;
+    height: 15px;
+    flex: none;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    background: #d4dbee;
+    box-shadow: 0 0 0 1.5px #d4dbee;
+}
+
+.ap-step.on .ap-node {
+    background: var(--ap-c);
+    box-shadow: 0 0 0 1.5px var(--ap-c);
+}
+
+.ap-step.on small {
+    color: #303750;
+}
+
+.ap-step.bad .ap-node {
+    background: #e5484d;
+    box-shadow: 0 0 0 1.5px #e5484d;
+}
+
+.ap-step.bad small {
+    color: #e5484d;
+}
+
+.ap-step em {
+    position: absolute;
+    z-index: 1;
+    top: 6px;
+    left: 50%;
+    width: 100%;
+    height: 3px;
+    border-radius: 5px;
+    background: #e4e8f4;
+}
+
+.ap-step em.fill {
+    background: var(--ap-c);
+}
+
+/* ==========================================
+   CONTACT COMPANY SECTION
+========================================== */
+
+.ap-contact {
+    margin-top: 22px;
+    padding: 18px 0 0;
+    border-top: 1px solid #edf0f7;
+}
+
+.ap-contact-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 13px;
+}
+
+.ap-contact-eyebrow {
+    display: block;
+    margin-bottom: 5px;
+    color: #8a91aa;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.ap-contact-heading h4 {
+    margin: 0;
+    color: #252b43;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.ap-ct-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.ap-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 39px;
+    padding: 9px 14px;
+
+    border: 1px solid #e2e6f4;
+    border-radius: 11px;
+
+    color: #4a5473;
+    background: #ffffff;
+    text-decoration: none;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 750;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.ap-btn:hover {
+    transform: translateY(-1px);
+    border-color: #7770f2;
+    color: #5b51e8;
+    background: #f8f7ff;
+}
+
+.ap-btn svg {
+    flex: none;
+}
+
+.ap-btn.pri {
+    color: #ffffff;
+    border-color: transparent;
+    background: linear-gradient(110deg, #4776f5, #7551e9);
+    box-shadow: 0 5px 13px rgba(91, 81, 232, 0.17);
+}
+
+.ap-btn.pri:hover {
+    color: #ffffff;
+    background: linear-gradient(110deg, #3967e5, #6843db);
+}
+
+.ap-ct-none {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 11px;
+    color: #78839e;
+    background: #f7f8fc;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+body.candidate-dark .ap-card {
+    color: #eef2ff;
+    border-color: rgba(255, 255, 255, 0.1);
+    background: #141a30;
+}
+
+body.candidate-dark .ap-title,
+body.candidate-dark .ap-contact-heading h4 {
+    color: #eef2ff;
+}
+
+body.candidate-dark .ap-co,
+body.candidate-dark .ap-when,
+body.candidate-dark .ap-log small,
+body.candidate-dark .ap-contact-eyebrow,
+body.candidate-dark .ap-ct-none {
+    color: #a9b4d6;
+}
+
+body.candidate-dark .ap-chips span {
+    color: #dbe3ff;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+body.candidate-dark .ap-log {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.045);
+}
+
+body.candidate-dark .ap-log b {
+    color: #e6eaff;
+}
+
+body.candidate-dark .ap-step.on small {
+    color: #ffffff;
+}
+
+body.candidate-dark .ap-contact {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.candidate-dark .ap-btn {
+    color: #dbe3ff;
+    border-color: rgba(255, 255, 255, 0.13);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.candidate-dark .ap-btn.pri {
+    color: #ffffff;
+    background: linear-gradient(110deg, #4776f5, #7551e9);
+}
+
+body.candidate-dark .ap-ct-none {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 520px) {
+    .ap-card {
+        padding: 19px 16px 17px;
+        border-radius: 19px;
+    }
+
+    .ap-top {
+        flex-wrap: wrap;
+        gap: 11px;
+    }
+
+    .ap-av {
+        width: 47px;
+        height: 47px;
+        flex-basis: 47px;
+        border-radius: 13px;
+        font-size: 16px;
+    }
+
+    .ap-who {
+        flex-basis: calc(100% - 65px);
+    }
+
+    .ap-title {
+        font-size: 16px;
+    }
+
+    .ap-pill {
+        margin-left: 58px;
+        padding: 7px 11px;
+    }
+
+    .ap-log {
+        padding: 14px 12px;
+    }
+
+    .ap-steps {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .ap-step small {
+        font-size: 10px;
+    }
+
+    .ap-contact {
+        margin-top: 19px;
+    }
+
+    .ap-btn {
+        flex: 1 1 auto;
+    }
+}
+
+.ap-date-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-top: 14px;
+    color: #77819b;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.ap-date-row b {
+    color: #414b68;
+    font-weight: 700;
+}
+
+body.candidate-dark .ap-date-row,
+body.candidate-dark .ap-date-row b {
+    color: #b9c3e0;
+}
+
+.ap-contact-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.ap-contact-eyebrow {
+    display: block;
+    color: #929bb5;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    margin-bottom: 5px;
+}
+
+.ap-contact-heading h4 {
+    margin: 0;
+    color: #252d47;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.ap-contact-note {
+    margin: 12px 0 0;
+    font-size: 11px;
+    color: #8a93b0;
+}
+
+.ap-ct-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ap-btn {
+    cursor: pointer;
+}
+
+body.candidate-dark .ap-contact-heading h4 {
+    color: #eef2ff;
+}
+
+body.candidate-dark .ap-contact-note {
+    color: #a9b4d6;
+}

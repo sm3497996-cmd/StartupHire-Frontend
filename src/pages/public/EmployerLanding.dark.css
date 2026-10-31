@@ -1,0 +1,210 @@
+/* AUTO-GENERATED dark theme for EmployerLanding.css
+   Sirf [data-theme="dark"] mein chalta hai, light theme ko touch nahi karta.
+   Kisi rule ka dark look badalna ho to yahin edit karo. */
+
+:where([data-theme="dark"]) .employer-page {
+    background: #131025;
+    color: #d8d7e3;
+}
+
+:where([data-theme="dark"]) .employer-nav {
+    background: rgba(21, 24, 33, 0.86);
+}
+
+:where([data-theme="dark"]) .employer-logo span:first-child {
+    color: #cfccde;
+}
+
+:where([data-theme="dark"]) .employer-nav-links button {
+    color: #97a0b4;
+}
+
+:where([data-theme="dark"]) .home-nav-btn {
+    border: 1px solid #322c47;
+    background: #151821;
+    color: #b5b1c1;
+}
+
+:where([data-theme="dark"]) .metric-value span {
+    color: #ade6eb;
+}
+
+:where([data-theme="dark"]) .glass-panel {
+    background: rgba(21, 24, 33, 0.9);
+}
+
+:where([data-theme="dark"]) .panel-search {
+    color: #b9b5c7;
+}
+
+:where([data-theme="dark"]) .panel-candidate strong {
+    color: #d4d0de;
+}
+
+:where([data-theme="dark"]) .candidate-match {
+    color: #77d09a;
+    background: #153020;
+}
+
+:where([data-theme="dark"]) .panel-highlight strong {
+    color: #d4d0de;
+}
+
+:where([data-theme="dark"]) .orbit-icon-two {
+    color: #ade6eb;
+}
+
+:where([data-theme="dark"]) .marquee-track span.dot {
+    color: #ade6eb;
+}
+
+:where([data-theme="dark"]) .cyan-label {
+    color: #62d0e5;
+}
+
+:where([data-theme="dark"]) .pink-label {
+    color: #eaaec9;
+}
+
+:where([data-theme="dark"]) .post-job-section {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .post-job-heading>p {
+    color: #8c95ab;
+}
+
+:where([data-theme="dark"]) .post-job-card {
+    background: linear-gradient(135deg, #151821 0%, #231810 100%);
+    border: 1px solid #45352c;
+}
+
+:where([data-theme="dark"]) .post-icon {
+    background: #2e1c14;
+}
+
+:where([data-theme="dark"]) .job-input input,
+:where([data-theme="dark"]) .job-input select {
+    border: 1px solid #443932;
+    background: #151821;
+    color: #d2ced9;
+}
+
+:where([data-theme="dark"]) .find-talent-section {
+    background: #120f22;
+}
+
+:where([data-theme="dark"]) .talent-search {
+    background: #151821;
+    border: 1px solid #302a47;
+}
+
+:where([data-theme="dark"]) .talent-search input {
+    color: #c8c6d3;
+}
+
+:where([data-theme="dark"]) .talent-card {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .talent-available {
+    background: rgba(21, 24, 33, 0.92);
+}
+
+:where([data-theme="dark"]) .talent-arrow {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .verified {
+    background: #19132b;
+}
+
+:where([data-theme="dark"]) .talent-skills span,
+:where([data-theme="dark"]) .talent-modal-skills span {
+    background: #130f22;
+}
+
+:where([data-theme="dark"]) .talent-card.pink .talent-skills span {
+    color: #eaaec9;
+    background: #220f17;
+}
+
+:where([data-theme="dark"]) .talent-card.orange .talent-skills span {
+    background: #2b1a13;
+}
+
+:where([data-theme="dark"]) .talent-card.cyan .talent-skills span {
+    color: #62d0e5;
+    background: #13262b;
+}
+
+:where([data-theme="dark"]) .talent-empty {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .pipeline-heading h2 span {
+    color: #ade6eb;
+}
+
+:where([data-theme="dark"]) .pipeline-icon {
+    color: #ade6eb;
+}
+
+:where([data-theme="dark"]) .pipeline-active {
+    color: #ade6eb;
+}
+
+:where([data-theme="dark"]) .benefits-section {
+    background: #18142c;
+}
+
+:where([data-theme="dark"]) .benefits-glow-one {
+    background: radial-gradient(circle, #4c2232, transparent 70%);
+}
+
+:where([data-theme="dark"]) .benefits-header h2 span {
+    color: #eaaec9;
+}
+
+:where([data-theme="dark"]) .benefits-header>p {
+    color: #b2afbc;
+}
+
+:where([data-theme="dark"]) .benefits-strip {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .strip-item {
+    color: #c2c0cd;
+}
+
+:where([data-theme="dark"]) .strip-icon {
+    background: #19132b;
+}
+
+:where([data-theme="dark"]) .cta-button {
+    background: #151821;
+    color: #614cb0;
+}
+
+:where([data-theme="dark"]) .footer-bottom {
+    color: #929bb0;
+}
+
+:where([data-theme="dark"]) .employer-modal {
+    background: #151821;
+}
+
+:where([data-theme="dark"]) .modal-close {
+    background: #1e1a24;
+    color: #b1b8c7;
+}
+
+:where([data-theme="dark"]) .employer-modal form input,
+:where([data-theme="dark"]) .employer-modal form select {
+    border: 1px solid #373240;
+}
+
+:where([data-theme="dark"]) .talent-modal {
+    background: #151821;
+}
