@@ -1,27 +1,164 @@
-# StartupHire (restructured)
+# 🚀 StartupHire.in — Job Portal
 
-Run: `npm install && npm run dev`
+StartupHire.in is a React-based job portal designed to connect candidates with employers through a modern, responsive, and user-friendly interface.
 
-## Structure (src/)
-- `config/` env.js (backend URLs, `.env` se override), storageKeys.js
-- `services/` API helpers (social, feed, interactions, admin, auth/logout)
-- `context/` + `hooks/` ThemeProvider, useTheme, useInteractions, useCountUp
-- `utils/` safeLink, date, initials, storage, resumeHelpers, resumePdf
-- `constants/` resume.js, homeData.js
-- `components/ui/` Icon (4 duplicate icon sets -> 1), ThemeToggle
-- `components/layout|common|resume/` Navbar, LocationPicker, ProfileEditors, resume views/fields
-- `pages/` home, public, auth, candidate, employer, company, admin (each with its own css)
-- `routes/index.jsx` all routes; `App.jsx` = providers only
-- `styles/` index.css (Tailwind import), theme.css (tokens), base.css, home.css, dashboard/
+The frontend is organized into reusable components, dedicated pages, shared utilities, and theme management to make the application easier to maintain and extend.
 
-## Theme (light / dark)
-- `<html data-theme="dark|light">` is set by ThemeProvider and saved in localStorage.
-- Tailwind: tokens `bg-bg bg-surface text-text text-muted border-border bg-brand`, and `dark:` variant works.
-- `*.dark.css` next to public/company page css are auto-generated dark overrides (edit freely).
-- Light theme CSS is unchanged.
+## ✨ Features
 
-## Dashboards (sections)
-- `pages/candidate/sections/*`, `pages/employer/sections/*`, `pages/admin/sections/*`:
-  har sidebar option ka apna component. Dashboard file ab sirf state + layout + section switch hai.
-- Bug fix: AdminDashboard ke Users filter mein `(filter = useEffect == "Offline" ...)` typo tha
-  (const ko assign karke crash karta tha) -> `filter === "Offline"` kiya.
+### 👨‍💻 Candidate Dashboard
+
+* Candidate profile management
+* Resume creation and editing
+* Job search and filtering
+* Saved jobs and applications
+* Application status tracking
+* Notifications and messaging
+
+### 🏢 Employer Dashboard
+
+* Company profile management
+* Job posting and management
+* Candidate discovery
+* Application management
+* Employer team and dashboard sections
+
+### 🛡️ Admin Dashboard
+
+* Dedicated admin interface
+* User and job management sections
+* Dashboard statistics and activity views
+
+### 🎨 User Interface
+
+* Responsive React interface
+* Reusable UI components
+* Light and dark themes
+* Shared theme context and hooks
+* Organized CSS and theme styles
+
+## 🛠️ Tech Stack
+
+* React.js
+* JavaScript
+* CSS
+* Vite
+* Git and GitHub
+* REST API integration
+
+## 📂 Project Structure
+
+```text
+src/
+├── assets/
+├── components/
+│   ├── common/
+│   ├── layout/
+│   ├── resume/
+│   └── ui/
+├── config/
+├── constants/
+├── context/
+├── hooks/
+├── pages/
+│   ├── admin/
+│   ├── auth/
+│   ├── candidate/
+│   ├── company/
+│   ├── employer/
+│   ├── home/
+│   └── public/
+├── routes/
+├── services/
+├── styles/
+├── utils/
+├── App.jsx
+└── main.jsx
+```
+
+### Architecture
+
+* **Components:** Shared interface elements and reusable UI.
+* **Pages:** Separate public pages, authentication screens, and role-based dashboards.
+* **Services:** API-related service modules.
+* **Context and Hooks:** Shared theme state and reusable React logic.
+* **Utils and Constants:** Common helper functions, configuration values, and static data.
+* **Styles:** Base styles, theme styles, and dashboard-specific styles.
+* **Routes:** Application route configuration.
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+Install [Node.js](https://nodejs.org/) and npm before running the project.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/sm3497996-cmd/StartupHire-Frontend.git
+```
+
+### 2. Navigate to the Project
+
+```bash
+cd StartupHire-Frontend
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+If the application requires environment variables, create a local `.env` file using the variable names defined in the project configuration or `.env.example`.
+
+Do not commit passwords, private API keys, or database credentials.
+
+### 5. Start the Development Server
+
+```bash
+npm run dev
+```
+
+Open the local URL displayed in the terminal.
+
+## 📦 Production Build
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## 🔒 Security
+
+* Keep private credentials out of source control.
+* Use environment variables for environment-specific configuration.
+* Keep `node_modules` and generated build files out of Git.
+
+## 🎯 Project Goals
+
+* Build a maintainable React frontend.
+* Organize features into reusable components and modules.
+* Provide separate experiences for candidates, employers, and administrators.
+* Deliver a responsive interface with theme support.
+* Integrate frontend functionality with backend AP.Is.
+
+## 👩‍💻 Author
+
+**Shreya Mishra**
+
+* GitHub: [sm3497996-cmd](https://github.com/sm3497996-cmd)
+* LinkedIn: [Shreya Mishra](https://www.linkedin.com/in/shreya-mishra-166345339/)
+
+---
+
+*StartupHire.in — Connecting talent with opportunities.*
