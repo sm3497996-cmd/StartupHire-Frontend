@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { API_LARAVEL, API_PHP } from "../../config/env";
-import { TOKEN_KEY, USER_KEY } from "../../config/storageKeys";
+import { TOKEN_KEY, USER_KEY, PHP_TOKEN_KEY } from "../../config/storageKeys";
 
 const overlayStyle = {
     position: "fixed",
@@ -164,6 +164,7 @@ const SimpleLogin = ({
                 return;
             }
             localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+            if (data.token) localStorage.setItem(PHP_TOKEN_KEY, data.token);
 
             /* STEP 2: Laravel token (sirf like/save/comment ke liye).
                Ye fail ho jaye to bhi login NAHI rukega. */

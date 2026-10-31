@@ -1,6 +1,5 @@
 import { API_LOGOUT_URL } from "../config/env";
-import { TOKEN_KEY, USER_KEY } from "../config/storageKeys";
-
+import { TOKEN_KEY, USER_KEY, PHP_TOKEN_KEY } from "../config/storageKeys";
 export const doLogout = async (navigate) => {
   const token = localStorage.getItem(TOKEN_KEY);
 
@@ -20,6 +19,7 @@ export const doLogout = async (navigate) => {
 
   localStorage.removeItem(USER_KEY);
   localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem(PHP_TOKEN_KEY);
 
   navigate("/");
   window.scrollTo(0, 0);

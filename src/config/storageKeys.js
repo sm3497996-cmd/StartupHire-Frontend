@@ -2,3 +2,4 @@
 export const TOKEN_KEY = "startupHireToken";
 export const USER_KEY = "startupHireUser";
 export const THEME_KEY = "startupHireTheme";
+export const PHP_TOKEN_KEY = "startupHirePhpToken";
