@@ -60,7 +60,7 @@ function Employer({ onLogout }) {
     const [selectedCandidate, setSelectedCandidate] = useState(null);
     const [quickCommentCandidate, setQuickCommentCandidate] = useState(null);
     const [profileOpen, setProfileOpen] = useState(false);
-    const [myJobs, setMyJobs] = useState(initialJobs);
+    const [myJobs, setMyJobs] = useState([]);
     const [form, setForm] = useState(emptyForm);
     const [toast, setToast] = useState("");
     const [advFilters, setAdvFilters] = useState(emptyFilters);
