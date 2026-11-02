@@ -171,6 +171,14 @@ function Candidate({ onLogout }) {
             .finally(() => setAppsLoading(false));
     }, []);
     const [selectedJob, setSelectedJob] = useState(null);
+    useEffect(() => {
+        if (!selectedJob?.id) return;
+        fetch(`${API_PHP}/jobs.php`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ action: "view", job_id: selectedJob.id }),
+        }).catch(() => { });
+    }, [selectedJob?.id]);
     const [applyJob, setApplyJob] = useState(null);
     const [answers, setAnswers] = useState({});
     const [quickCommentJob, setQuickCommentJob] = useState(null);
