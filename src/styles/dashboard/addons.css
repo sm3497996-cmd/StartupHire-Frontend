@@ -1041,3 +1041,7 @@
         grid-template-columns: 1fr;
     }
 }
+
+.profile-arrow {
+    display: none !important;
+}
