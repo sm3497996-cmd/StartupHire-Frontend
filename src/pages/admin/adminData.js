@@ -78,9 +78,9 @@ export function buildEvents() {
 export const seedJobs = [
     { id: 1, title: "Frontend Developer", company: "Acme Technologies", city: "Bhopal", status: "Live", color: "#5b3df5", applicants: 48 },
     { id: 2, title: "Backend Engineer", company: "NovaStack Pvt Ltd", city: "Pune", status: "Live", color: "#12b86f", applicants: 36 },
-    { id: 3, title: "UI/UX Designer", company: "PixelCraft Studio", city: "Bangalore", status: "Pending", color: "#e83f7d", applicants: 0 },
+    { id: 3, title: "UI/UX Designer", company: "PixelCraft Studio", city: "Bangalore", status: "Pending", color: "#e83f7d", },
     { id: 4, title: "Sales Executive (₹90k/week!!)", company: "Fake Recruit Co", city: "Unknown", status: "Flagged", color: "#ff6b4a", applicants: 3 },
-    { id: 5, title: "Growth Marketer", company: "BrightPath Labs", city: "Indore", status: "Pending", color: "#f7a51c", applicants: 0 },
+    { id: 5, title: "Growth Marketer", company: "BrightPath Labs", city: "Indore", status: "Pending", color: "#f7a51c", },
     { id: 6, title: "DevOps Engineer", company: "NovaStack Pvt Ltd", city: "Remote", status: "Live", color: "#159fd8", applicants: 19 },
 ];
 
