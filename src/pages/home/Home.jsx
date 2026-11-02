@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import About from "../public/About";
 import Candidate from "../public/CandidateLanding";
 import Employer from "../public/EmployerLanding";
@@ -8,18 +7,28 @@ import SimpleLogin from "../auth/SimpleLogin";
 import Navbar from "../../components/layout/Navbar";
 import Jobs from "../public/Jobs";
 import { HERO_WORDS as heroWords, HOME_JOBS as jobs } from "../../constants/homeData";
+import { useNavigate, useLocation } from "react-router-dom";
 
 /* =========================================
    HOME (purana App, ab Home naam se)
 ========================================= */
+const PATH_TO_PAGE = {
+  "/jobs": "jobs",
+  "/candidate": "candidate",
+  "/employer": "employer",
+  "/about": "about",
+};
 const Home = () => {
   const navigate = useNavigate();
+  const loc = useLocation(); // "location" naam pehle se search ke liye use ho raha hai
+  const page = PATH_TO_PAGE[loc.pathname] || "home";
+  const setPage = (p) => navigate(p === "home" ? "/" : `/${p}`);
 
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [loginType, setLoginType] = useState("candidate");
   const [mobileMenu, setMobileMenu] = useState(false);
-  const [page, setPage] = useState("home");
+
 
   const [search, setSearch] = useState("");
   const [location, setLocation] = useState("");
@@ -34,6 +43,16 @@ const Home = () => {
 
     return () => clearInterval(interval);
   }, []);
+  useEffect(() => {
+    if (page !== "home") return;
+    if (loc.pathname === "/features") {
+      setTimeout(() => {
+        document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [loc.pathname]);
 
   /* =========================================
      OPEN LOGIN — opens Register.jsx directly in LOGIN mode
@@ -706,8 +725,9 @@ FOR EMPLOYERS
         </div>
       </section>
 
+
       {/* PORTALS */}
-      <section className="portal-section portal-new">
+      <section id="features" className="portal-section portal-new">
         <div className="section-container">
           <div className="center-heading">
             <span className="section-label orange-label">

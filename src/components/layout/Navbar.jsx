@@ -4,25 +4,12 @@ import ThemeToggle from "../ui/ThemeToggle";
 const Navbar = ({ page, onNavigate, onLoginClick }) => {
     const [mobileMenu, setMobileMenu] = useState(false);
 
-    // Go to home page (if not already there) then smooth-scroll to a section
-    const goHomeAndScroll = (id) => {
-        if (page !== "home") {
-            onNavigate("home");
-            setTimeout(() => {
-                document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-            }, 100);
-        } else {
-            document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-        }
-
-        setMobileMenu(false);
-    };
 
     // Switch to a different full page (candidate / employer / about / home)
     const goTo = (target) => {
         onNavigate(target);
         setMobileMenu(false);
-        window.scrollTo(0, 0);
+        if (target !== "features") window.scrollTo(0, 0);
     };
 
     return (
@@ -33,11 +20,9 @@ const Navbar = ({ page, onNavigate, onLoginClick }) => {
                 </button>
 
                 <div className={`nav-links ${mobileMenu ? "mobile-open" : ""}`}>
-                    <button onClick={() => goHomeAndScroll("home")}>Home</button>
+                    <button onClick={() => goTo("home")}>Home</button>
                     <button onClick={() => goTo("jobs")}>Jobs</button>
-                    <button onClick={() => goHomeAndScroll("features")}>
-                        Features
-                    </button>
+                    <button onClick={() => goTo("features")}>Features</button>
                     <button onClick={() => goTo("candidate")}>Candidate</button>
                     <button onClick={() => goTo("employer")}>Employer</button>
                     <button onClick={() => goTo("about")}>About</button>

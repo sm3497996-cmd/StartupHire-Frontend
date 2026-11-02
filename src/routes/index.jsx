@@ -42,7 +42,18 @@ const AdminRoute = () => {
 ========================================= */
 
 const router = createBrowserRouter([
-  { path: "/", element: <Home /> },
+  // Home ke sabhi public URLs: ek hi Home component, URL se sahi page dikhta hai
+  {
+    element: <Home />,
+    children: [
+      { path: "/" },
+      { path: "/features" },
+      { path: "/jobs" },
+      { path: "/candidate" },
+      { path: "/employer" },
+      { path: "/about" },
+    ],
+  },
   { path: "/candidate-dashboard", element: <CandidateRoute /> },
   { path: "/candidate-dashboard/:section", element: <CandidateRoute /> },
   { path: "/employer-dashboard", element: <EmployerRoute /> },
