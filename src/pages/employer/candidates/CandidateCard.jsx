@@ -109,6 +109,7 @@ export default function CandidateCard({
     comments,
     onOpen,
     onLike,
+    onLikeCount,
     onSave,
     onComment,
     onShare,
@@ -227,7 +228,16 @@ export default function CandidateCard({
                     onClick={stop(onLike)}
                 >
                     <Ic n="heart" />
-                    <span>{liked ? c.likes + 1 : c.likes}</span>
+                    <span
+                        style={{ cursor: "pointer" }}
+                        title="See who liked"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onLikeCount && onLikeCount();
+                        }}
+                    >
+                        {liked ? c.likes + 1 : c.likes}
+                    </span>
                 </button>
 
                 <button type="button" className="tc-sb" aria-label="Comments" onClick={stop(onComment)}>

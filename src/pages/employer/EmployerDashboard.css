@@ -1046,3 +1046,52 @@
 .employer-app .sidebar-profile .large-avatar::after {
     display: none !important;
 }
+
+.conn-wrap {
+    display: flex;
+    justify-content: flex-start;
+    margin: 12px 0 22px;
+}
+
+.conn-btn {
+    border: none;
+    cursor: pointer;
+    padding: 10px 26px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.conn-btn.connect {
+    background: linear-gradient(135deg, #6228d7 0%, #ee2a7b 100%);
+    box-shadow: 0 8px 18px rgba(98, 40, 215, 0.3);
+}
+
+.conn-btn.connect:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(238, 42, 123, 0.4);
+}
+
+.conn-btn.pending {
+    background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+    color: #5a3a00;
+    cursor: default;
+    box-shadow: 0 6px 14px rgba(247, 151, 30, 0.3);
+}
+
+.conn-btn.connected {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    cursor: default;
+    box-shadow: 0 6px 14px rgba(34, 197, 94, 0.3);
+}
+
+.conn-btn.respond {
+    background: linear-gradient(135deg, #159fd8 0%, #6228d7 100%);
+    box-shadow: 0 8px 18px rgba(21, 159, 216, 0.3);
+}
+
+.conn-btn.respond:hover {
+    transform: translateY(-2px);
+}

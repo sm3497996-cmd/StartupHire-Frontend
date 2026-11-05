@@ -8,3 +8,8 @@ export const socialPost = (data) =>
         credentials: "include",
         body: new URLSearchParams(data),
     }).then((r) => r.json());
+
+export const socialGet = (query) =>
+    fetch(`${SOCIAL_API}?${new URLSearchParams(query)}`, {
+        credentials: "include",
+    }).then((r) => r.json());

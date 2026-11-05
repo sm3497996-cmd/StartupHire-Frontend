@@ -5,6 +5,7 @@ import CandidateDashboard from "../pages/candidate/CandidateDashboard";
 import EmployerDashboard from "../pages/employer/EmployerDashboard";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import PublicCompany from "../pages/company/PublicCompany";
+import SharedResume from "../pages/public/SharedResume";
 import { doLogout } from "../services/authService";
 
 /* =========================================
@@ -59,10 +60,13 @@ const router = createBrowserRouter([
   { path: "/employer-dashboard", element: <EmployerRoute /> },
   { path: "/employer-dashboard/:section", element: <EmployerRoute /> },
 
-  // NEW: public company page (bina login ke khulta hai)
+  // public company page (bina login ke khulta hai)
   { path: "/company/:id", element: <PublicCompany /> },
 
-  // NEW: super admin
+  // NEW: shared resume version (bina login ke khulta hai)
+  { path: "/shared-resume/:token", element: <SharedResume /> },
+
+  // super admin
   { path: "/admin", element: <AdminRoute /> },
   { path: "/admin/:section", element: <AdminRoute /> },
 ]);

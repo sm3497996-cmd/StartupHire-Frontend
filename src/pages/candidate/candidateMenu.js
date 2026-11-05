@@ -27,6 +27,7 @@ export const menuGroups = [
             },
             { id: "messages", label: "Messages", icon: "message" },
             { id: "settings", label: "Settings", icon: "settings" },
+            { id: "connections", label: "My Network", icon: "user" },
         ],
     },
 ];

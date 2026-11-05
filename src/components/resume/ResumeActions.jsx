@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import CandidateResumeView from "./CandidateResumeView";
-import { downloadResume } from "../../utils/resumePdf"; 
+import { downloadResume } from "../../utils/resumePdf";
 import { API_LARAVEL, LARAVEL_ORIGIN } from "../../config/env";
 
 const API = `${API_LARAVEL}/resume`;
@@ -75,6 +75,7 @@ const toPdfShape = (r) => {
 export default function ResumeActions({
     candidateId, name = "Candidate", role = "Candidate",
     saved = false, onSave, hideSave = false, compact = false,
+    versionData = null, previewNode = null, disabled = false,
 }) {
     const [open, setOpen] = useState(false);
     const [busy, setBusy] = useState(false);
@@ -82,6 +83,18 @@ export default function ResumeActions({
 
     const download = async (template = "photo") => {
         setMenu(false);
+
+        // Employer ke liye: jis version se apply hua, wahi download ho (current profile resume fetch hi nahi hoga)
+        if (versionData) {
+            const data = {
+                ...versionData,
+                personal: { ...(versionData.personal || {}), mother: "", father: "" },
+            };
+            if (!data.personal.name) data.personal.name = name;
+            downloadResume(data, role, template);
+            return;
+        }
+
         setBusy(true);
         try {
             const res = await fetch(`${API}/${candidateId}`, {
@@ -114,16 +127,14 @@ export default function ResumeActions({
         <>
             <style>{`
                 .ra-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:10px; margin:14px 6px 30px; }
-.ra-row.compact { margin:14px 6px 30px; }
-.ra-btn {
-    display:inline-flex; align-items:center; justify-content:center; gap:6px; cursor:pointer;
-    border:1.5px solid #5b3df5; color:#5b3df5; background:#fff;
-    border-radius:14px; padding:11px 10px; font:inherit; font-size:13.5px; font-weight:700;
-    .ra-btn:focus, .ra-btn:focus-visible { outline: none; }
-}
+                .ra-row.compact { margin:14px 6px 30px; }
+                .ra-btn {
+                    display:inline-flex; align-items:center; justify-content:center; gap:6px; cursor:pointer;
+                    border:1.5px solid #5b3df5; color:#5b3df5; background:#fff;
+                    border-radius:14px; padding:11px 10px; font:inherit; font-size:13.5px; font-weight:700;
+                }
+                .ra-btn:focus, .ra-btn:focus-visible { outline: none; }
                 .ra-btn:hover { background:rgba(91,61,245,.08); }
-                
-                f; }
                 .ra-btn.on { background:#12b86f; border-color:#12b86f; color:#fff; }
                 .ra-btn:disabled { opacity:.6; cursor:default; }
                 .ra-overlay {
@@ -144,17 +155,17 @@ export default function ResumeActions({
                 .ra-body { padding:16px 20px 24px; overflow-y:auto; }
                 .ra-x { border:none; background:rgba(120,120,140,.15); color:inherit; width:32px; height:32px; border-radius:50%; cursor:pointer; }
                 .ra-dl { position:relative; display:flex; }
-.ra-dl .ra-btn { width:100%; }
-.ra-menu {
-    position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:50;
-    background:#fff; border:1px solid rgba(91,61,245,.25); border-radius:12px;
-    box-shadow:0 12px 30px rgba(0,0,0,.18); overflow:hidden;
-}
-.ra-menu button {
-    display:block; width:100%; padding:11px 12px; border:none; background:transparent;
-    font:inherit; font-size:13px; font-weight:600; color:#5b3df5; cursor:pointer; text-align:left;
-}
-.ra-menu button:hover { background:rgba(91,61,245,.08); }
+                .ra-dl .ra-btn { width:100%; }
+                .ra-menu {
+                    position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:50;
+                    background:#fff; border:1px solid rgba(91,61,245,.25); border-radius:12px;
+                    box-shadow:0 12px 30px rgba(0,0,0,.18); overflow:hidden;
+                }
+                .ra-menu button {
+                    display:block; width:100%; padding:11px 12px; border:none; background:transparent;
+                    font:inherit; font-size:13px; font-weight:600; color:#5b3df5; cursor:pointer; text-align:left;
+                }
+                .ra-menu button:hover { background:rgba(91,61,245,.08); }
             `}</style>
 
             <div className={`ra-row ${compact ? "compact" : ""}`} onClick={stop}>
@@ -163,9 +174,9 @@ export default function ResumeActions({
                         {saved ? "✓ Saved" : "Save Resume"}
                     </button>
                 )}
-                <button className="ra-btn" onClick={() => setOpen(true)}>View Resume</button>
+                <button className="ra-btn" onClick={() => setOpen(true)} disabled={disabled}>View Resume</button>
                 <div className="ra-dl">
-                    <button className="ra-btn" onClick={() => setMenu((m) => !m)} disabled={busy}>
+                    <button className="ra-btn" onClick={() => setMenu((m) => !m)} disabled={busy || disabled}>
                         {busy ? "Preparing..." : "Download ▾"}
                     </button>
                     {menu && (
@@ -192,13 +203,13 @@ export default function ResumeActions({
                                         {saved ? "✓ Saved" : "Save Resume"}
                                     </button>
                                 )}
-                                <button className="ra-btn" onClick={() => download("photo")} disabled={busy}>
+                                <button className="ra-btn" onClick={() => download("photo")} disabled={busy || disabled}>
                                     {busy ? "Preparing..." : "Download"}
                                 </button>
                                 <button className="ra-x" onClick={() => setOpen(false)}>✕</button>
                             </div>
                             <div className="ra-body">
-                                <CandidateResumeView candidateId={candidateId} />
+                                {previewNode || <CandidateResumeView candidateId={candidateId} />}
                             </div>
                         </div>
                     </div>,

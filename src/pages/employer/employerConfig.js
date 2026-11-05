@@ -23,6 +23,7 @@ export const menuGroups = [
 
             },
             { id: "messages", label: "Messages", icon: "message" },
+            { id: "connections", label: "My Network", icon: "users" },
             { id: "settings", label: "Settings", icon: "settings" },
         ],
     },

@@ -30,6 +30,9 @@ import PostJobSection from "./sections/PostJobSection";
 import EmployerNotificationsSection from "./sections/EmployerNotificationsSection";
 import EmployerMessagesSection from "./sections/EmployerMessagesSection";
 import EmployerUsersSection from "./sections/EmployerUsersSection";
+import JobSocialModal from "../../components/social/JobSocialModal";
+import { candidateAdapter } from "../../services/candidateSocialAdapter";
+import ConnectionsPanel from "./sections/ConnectionsPanel";
 function Employer({ onLogout }) {
     const navigate = useNavigate();
     const currentUser = (() => {
@@ -59,6 +62,7 @@ function Employer({ onLogout }) {
 
     const [selectedCandidate, setSelectedCandidate] = useState(null);
     const [quickCommentCandidate, setQuickCommentCandidate] = useState(null);
+    const [socialModal, setSocialModal] = useState(null);
     const [profileOpen, setProfileOpen] = useState(false);
     const [myJobs, setMyJobs] = useState([]);
     const [form, setForm] = useState(emptyForm);
@@ -75,6 +79,26 @@ function Employer({ onLogout }) {
         savedResumes, toggleSaveResume,
     } = useInteractions(setToast);
     const [candidates, setCandidates] = useState([]);
+    const [connMap, setConnMap] = useState({}); // userId -> connected | sent | received
+
+    const loadConnStates = async () => {
+        try {
+            const [f, s, p] = await Promise.all([
+                api("/connections"),
+                api("/connections/sent"),
+                api("/connections/pending"),
+            ]);
+            const m = {};
+            (f.connections || []).forEach((x) => { m[x.id] = "connected"; });
+            (s.sent || []).forEach((x) => { m[x.id] = "sent"; });
+            (p.requests || []).forEach((x) => { m[x.id] = "received"; });
+            setConnMap(m);
+        } catch (e) {
+            console.error("Connections state error:", e);
+        }
+    };
+
+    useEffect(() => { loadConnStates(); }, []);
 
     useEffect(() => {
         api("/interactions/candidates")
@@ -84,7 +108,7 @@ function Employer({ onLogout }) {
                     setCandidates(data.candidates.filter((c) => !isIncomplete(c)));
                 } else {
                     setCandidates([]);
-                    setToast(data.message || "Candidates load nahi hue");
+                    setToast(data.message || "Failed to load candidates");
                 }
             })
             .catch((e) => {
@@ -161,7 +185,7 @@ function Employer({ onLogout }) {
             .then((d) => {
                 console.log("FEED interactions:", d);
                 if (d.success) setInteractions(d.interactions || []);
-                else setToast(d.message || "Interactions load nahi hue");
+                else setToast(d.message || "Failed to load interactions");
             })
             .catch((e) => console.error("FEED interactions error:", e));
 
@@ -208,7 +232,14 @@ function Employer({ onLogout }) {
             )
         );
     };
-
+    const connect = async (candidate) => {
+        const res = await api("/connections/send", {
+            method: "POST",
+            body: { user_id: candidate.id },
+        });
+        setToast(res.message || "Connection request sent");
+        loadConnStates();
+    };
     const shareCandidate = async (c) => {
         const shareText = `${c.name} - ${c.role}`;
 
@@ -226,11 +257,7 @@ function Employer({ onLogout }) {
 
     // Card ke comment icon se ab poora side panel nahi, ek chhota
     // modern quick-comment popup turant khulta hai
-    const openCommentsFor = (c) => {
-        setQuickCommentCandidate(c);
-        setCommentText("");
-        loadComments(c.id);
-    };
+    const openCommentsFor = (c) => setSocialModal({ candidate: c, tab: "comments" });
 
     useEffect(() => {
         if (selectedCandidate) loadComments(selectedCandidate.id);
@@ -645,6 +672,18 @@ function Employer({ onLogout }) {
         settings: "Settings",
         profile: "Company Profile",
         users: "Team & Users",
+        connections: "My Network",
+    };
+
+    const connectButton = (person) => {
+        const s = connMap[person.id];
+        if (s === "connected")
+            return <button className="conn-btn connected" disabled>✓ Connected</button>;
+        if (s === "sent")
+            return <button className="conn-btn pending" disabled>⏳ Pending</button>;
+        if (s === "received")
+            return <button className="conn-btn respond" onClick={() => setActive("connections")}>Respond</button>;
+        return <button className="conn-btn connect" onClick={() => connect(person)}>+ Connect</button>;
     };
 
     /* ---------- Candidate cards grid ---------- */
@@ -660,6 +699,7 @@ function Employer({ onLogout }) {
                         comments={commentCount(c)}
                         onOpen={() => setSelectedCandidate(c)}
                         onLike={() => toggleLike(c.id)}
+                        onLikeCount={() => setSocialModal({ candidate: c, tab: "likes" })}
                         onSave={() => toggleShortlist(c.id)}
                         onComment={() => openCommentsFor(c)}
                         onShare={() => shareCandidate(c)}
@@ -673,9 +713,9 @@ function Employer({ onLogout }) {
                         onSave={() => toggleSaveResume(c.id)}
                         compact
                     />
+                    <div className="conn-wrap">{connectButton(c)}</div>
                 </div>
             ))}
-
             {list.length === 0 && (
                 <div className="empty-state">
                     <div>⌕</div>
@@ -689,6 +729,7 @@ function Employer({ onLogout }) {
         <div className="tc-layout">
             <div className="tc-main">{renderCandidates(list)}</div>
             <InteractionsPanel items={interactions} onMarkAllRead={markAllRead} />
+
         </div>
     );
 
@@ -1116,6 +1157,8 @@ function Employer({ onLogout }) {
                                     onViewJobs={() => setActive("myjobs")}
                                     onToast={setToast}
                                 />
+                            ) : active === "connections" ? (
+                                <ConnectionsPanel />
                             ) : active === "users" ? (
                                 <EmployerUsersSection
                                     setToast={setToast}
@@ -1323,7 +1366,7 @@ function Employer({ onLogout }) {
                                         ref={commentInputRef}
                                         value={commentText}
                                         onChange={(e) => setCommentText(e.target.value)}
-                                        placeholder="Add an internal note..."
+                                        placeholder="Write a comment (candidate will see this)..."
                                         onKeyDown={(e) =>
                                             e.key === "Enter" &&
                                             addComment(selectedCandidate.id)
@@ -1363,6 +1406,7 @@ function Employer({ onLogout }) {
                                     <Icon name="mail" size={18} />
                                     Contact
                                 </a>
+                                {connectButton(selectedCandidate)}
                             </div>
 
                         </div>
@@ -1434,7 +1478,7 @@ function Employer({ onLogout }) {
                                 autoFocus
                                 value={commentText}
                                 onChange={(e) => setCommentText(e.target.value)}
-                                placeholder="Add an internal note..."
+                                placeholder="Write a comment (candidate will see this)..."
                                 onKeyDown={(e) =>
                                     e.key === "Enter" &&
                                     addComment(quickCommentCandidate.id)
@@ -1551,7 +1595,7 @@ function Employer({ onLogout }) {
                             <div className="quick-comment-title">
                                 <div>
                                     <strong>Report {reportCandidate.name}</strong>
-                                    <span>Admin is report ko review karega</span>
+                                    <span>Admin will review this report</span>
                                 </div>
                             </div>
                             <button className="quick-comment-close" onClick={() => setReportCandidate(null)}>
@@ -1588,6 +1632,17 @@ function Employer({ onLogout }) {
                     </div>
                 </div>
             )}
+            {socialModal && (
+                <JobSocialModal
+                    jobId={socialModal.candidate.id}
+                    title={socialModal.candidate.name}
+                    initialTab={socialModal.tab}
+                    adapter={candidateAdapter}
+                    onClose={() => setSocialModal(null)}
+                    onChange={() => loadComments(socialModal.candidate.id)}
+                />
+            )}
+
 
             {/* TOAST */}
             {toast && <div className="toast">{toast}</div>}

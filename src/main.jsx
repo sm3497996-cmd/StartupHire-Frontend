@@ -11,7 +11,10 @@ window.fetch = (input, init = {}) => {
     const url = typeof input === "string" ? input : (input.url ?? String(input));
     const token = localStorage.getItem(PHP_TOKEN_KEY);
     const isPhp = url.includes("startup-hire-api");
-    const isLaravel = !!API_LARAVEL && url.startsWith(API_LARAVEL);
+    const isLaravel =
+        !!API_LARAVEL &&
+        url.startsWith(API_LARAVEL) &&
+        !url.startsWith(`${API_LARAVEL}/login`);
 
     if (token && (isPhp || isLaravel)) {
         const headers = new Headers(

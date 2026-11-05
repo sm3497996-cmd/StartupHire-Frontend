@@ -3,6 +3,7 @@ import CandidateResumeView from "../../components/resume/CandidateResumeView";
 import ResumeActions from "../../components/resume/ResumeActions";
 import { API_PHP } from "../../config/env";
 import { initialsOf } from "../../utils/initials";
+import ResumeVersionView from "./ResumeVersionView";
 
 const API = `${API_PHP}/applications.php`;
 const TABS = ["All", "Applied", "Shortlisted", "Selected", "Rejected"];
@@ -32,6 +33,24 @@ export default function ApplicantsPanel({ initialStatus = "All", onToast }) {
     const [busyId, setBusyId] = useState(null);
     const [selectedId, setSelectedId] = useState(null);
     const [detailTab, setDetailTab] = useState("answers");
+    const [verData, setVerData] = useState(null);
+    const [verLoading, setVerLoading] = useState(false);
+
+    useEffect(() => {
+        setVerData(null);
+        const app = apps.find((x) => x.id === selectedId);
+        if (!selectedId || !app || !app.resume_version_id) {
+            setVerLoading(false);
+            return;
+        }
+
+        setVerLoading(true);
+        fetch(`${API}?resume_version_for=${selectedId}`, { credentials: "include" })
+            .then((r) => r.json())
+            .then((d) => { if (d.success) setVerData(d.version || null); })
+            .catch(() => { })
+            .finally(() => setVerLoading(false));
+    }, [selectedId]);
 
     useEffect(() => setTab(initialStatus), [initialStatus]);
 
@@ -97,6 +116,9 @@ export default function ApplicantsPanel({ initialStatus = "All", onToast }) {
     const openApp = (a) => {
         const has = Array.isArray(a.screening_answers) && a.screening_answers.length > 0;
         setDetailTab(has ? "answers" : "resume");
+        // pichle applicant ka version data na dikhe, aur current resume ek pal ke liye bhi na khule
+        setVerData(null);
+        setVerLoading(!!a.resume_version_id);
         setSelectedId(a.id);
     };
 
@@ -145,6 +167,8 @@ export default function ApplicantsPanel({ initialStatus = "All", onToast }) {
     if (selected) {
         const a = selected;
         const answers = Array.isArray(a.screening_answers) ? a.screening_answers : [];
+        const hasVersion = !!a.resume_version_id;
+        const versionReady = hasVersion && !!verData;
 
         return (
             <section className="ap-wrap">
@@ -169,6 +193,9 @@ export default function ApplicantsPanel({ initialStatus = "All", onToast }) {
                                 name={a.candidate_name}
                                 hideSave
                                 compact
+                                versionData={versionReady ? verData.data : null}
+                                previewNode={versionReady ? <ResumeVersionView data={verData.data} /> : null}
+                                disabled={hasVersion && verLoading}
                             />
                             <div className="ap-sub">
                                 Applied for <b>{a.job_title}</b> on {fmtDate(a.applied_at)}
@@ -248,7 +275,22 @@ export default function ApplicantsPanel({ initialStatus = "All", onToast }) {
                             )
                         )}
 
-                        {detailTab === "resume" && <CandidateResumeView candidateId={a.candidate_id} />}
+                        {detailTab === "resume" && (
+                            hasVersion && verLoading ? (
+                                <p style={{ opacity: 0.6 }}>Loading resume...</p>
+                            ) : versionReady ? (
+                                <>
+                                    <div className="ap-q" style={{ marginBottom: 18 }}>
+                                        Applied with: <b>{verData.title}</b>
+                                        {verData.target_field ? ` (${verData.target_field})` : ""}
+                                    </div>
+                                    <ResumeVersionView data={verData.data} />
+                                </>
+                            ) : (
+                                // purani application (version nahi) ya version delete ho chuka: profile resume
+                                <CandidateResumeView candidateId={a.candidate_id} />
+                            )
+                        )}
                     </div>
                 </div>
             </section>

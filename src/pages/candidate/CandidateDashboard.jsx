@@ -26,7 +26,10 @@ import CompaniesSection from "./sections/CompaniesSection";
 import NotificationsSection from "./sections/NotificationsSection";
 import MessagesSection from "./sections/MessagesSection";
 import ProfileSection from "./sections/ProfileSection";
-
+import JobSocialModal from "../../components/social/JobSocialModal";
+import ConnectionsPanel from "../employer/sections/ConnectionsPanel";
+import ResumeVersions from "./components/ResumeVersions";
+import { api } from "../../services/interactionsService";
 
 function Candidate({ onLogout }) {
     const navigate = useNavigate();
@@ -181,7 +184,14 @@ function Candidate({ onLogout }) {
     }, [selectedJob?.id]);
     const [applyJob, setApplyJob] = useState(null);
     const [answers, setAnswers] = useState({});
+
+    // ---- Resume versions (pick one while applying) ----
+    const [versions, setVersions] = useState([]);
+    const [pickJob, setPickJob] = useState(null);
+    const [pickedVersion, setPickedVersion] = useState("");
+
     const [quickCommentJob, setQuickCommentJob] = useState(null);
+    const [socialModal, setSocialModal] = useState(null);
     const [profileOpen, setProfileOpen] = useState(false);
     const [resumeTab, setResumeTab] = useState("Resume");
     const [savingResume, setSavingResume] = useState(false);
@@ -306,7 +316,6 @@ function Candidate({ onLogout }) {
                             id: String(e.id), role: e.designation || "", company: e.company_name || "",
                             type: e.employment_type || "Full Time", location: e.location || "",
                             startDate: fmtM(e.start_date), endDate: e.currently_working ? "Present" : fmtM(e.end_date),
-                            description: e.job_description || "",
                             description: e.job_description || "",
                             refName: e.reference_name || "",
                             refDesignation: e.reference_designation || "",
@@ -649,13 +658,14 @@ function Candidate({ onLogout }) {
         }
     };
 
-    const handleApplyJob = async (job, screeningAnswers = []) => {
+    const handleApplyJob = async (job, screeningAnswers = [], versionId = "") => {
         try {
             const formData = new FormData();
 
             formData.append("action", "apply");
             formData.append("job_id", job.id);
             formData.append("screening_answers", JSON.stringify(screeningAnswers));
+            if (versionId) formData.append("resume_version_id", versionId);
 
             const response = await fetch(
                 `${API_PHP}/applications.php`,
@@ -682,13 +692,36 @@ function Candidate({ onLogout }) {
         }
     };
 
-    const startApply = (job) => {
+    // Screening questions (if any) -> then submit with the chosen resume version
+    const proceedApply = (job, versionId = "") => {
         if (job.screening && job.screening.length > 0) {
             setAnswers({});
-            setApplyJob(job);
+            setApplyJob({ ...job, _versionId: versionId });
         } else {
-            handleApplyJob(job);
+            handleApplyJob(job, [], versionId);
         }
+    };
+
+    // If the candidate has saved resume versions, let them pick one first
+    const startApply = async (job) => {
+        let list = versions;
+        try {
+            const d = await api("/resume-versions"); // fresh list, so a just-created version shows up
+            if (d && d.versions) {
+                list = d.versions;
+                setVersions(d.versions);
+            }
+        } catch {
+            // keep the old list
+        }
+
+        if (list.length > 0) {
+            const def = list.find((v) => Number(v.is_default) === 1) || list[0];
+            setPickedVersion(String(def.id));
+            setPickJob(job);
+            return;
+        }
+        proceedApply(job);
     };
 
     const submitScreening = async () => {
@@ -704,7 +737,7 @@ function Candidate({ onLogout }) {
             type: q.type,
             answer: answers[i] || "",
         }));
-        const ok = await handleApplyJob(applyJob, payload);
+        const ok = await handleApplyJob(applyJob, payload, applyJob._versionId || "");
         if (ok) {
             setApplyJob(null);
             setAnswers({});
@@ -721,11 +754,7 @@ function Candidate({ onLogout }) {
             })
             .catch(() => { });
 
-    const openCommentsFor = (job) => {
-        setQuickCommentJob(job);
-        setCommentText("");
-        loadJobComments(job.id);
-    };
+    const openCommentsFor = (job) => setSocialModal({ job, tab: "comments" });
 
     useEffect(() => {
         if (selectedJob) loadJobComments(selectedJob.id);
@@ -818,6 +847,7 @@ function Candidate({ onLogout }) {
         companies: "Companies",
         notifications: "Notifications",
         messages: "Messages",
+        connections: "My Network",
         settings: "Settings",
         profile: "My Profile",
     };
@@ -1312,7 +1342,14 @@ function Candidate({ onLogout }) {
                         }}
                     >
                         <Icon name="heart" size={20} />
-                        <span>
+                        <span
+                            style={{ cursor: "pointer" }}
+                            title="See who liked"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setSocialModal({ job, tab: "likes" });
+                            }}
+                        >
                             {likeCount(job)}
                         </span>
                     </button>
@@ -1687,6 +1724,7 @@ function Candidate({ onLogout }) {
                             saved={saved}
                             setActive={setActive}
                         />
+
                     ) : active === "find" ? (
 
                         <FindJobsSection
@@ -1754,43 +1792,55 @@ function Candidate({ onLogout }) {
                             threads={threads}
                         />
 
+                    ) : active === "connections" ? (
+
+                        <ConnectionsPanel />
+
                     ) : active === "profile" ? (
 
-                        <ProfileSection
-                            addNewItem={addNewItem}
-                            addressCurrEditing={addressCurrEditing}
-                            addressPermEditing={addressPermEditing}
-                            addSkill={addSkill}
-                            avatarContent={avatarContent}
-                            candidateRole={candidateRole}
-                            cleanedResume={cleanedResume}
-                            clearItemDetails={clearItemDetails}
-                            handleSaveResume={handleSaveResume}
-                            isItemEditing={isItemEditing}
-                            personalEditing={personalEditing}
-                            photoBusy={photoBusy}
-                            photoInputRef={photoInputRef}
-                            removeAttachment={removeAttachment}
-                            removeListItem={removeListItem}
-                            removePhoto={removePhoto}
-                            resumeData={resumeData}
-                            resumeTab={resumeTab}
-                            savingResume={savingResume}
-                            setAddressCurrEditing={setAddressCurrEditing}
-                            setAddressPermEditing={setAddressPermEditing}
-                            setPersonalEditing={setPersonalEditing}
-                            setResumeData={setResumeData}
-                            setResumeTab={setResumeTab}
-                            setSkillInput={setSkillInput}
-                            shownPhoto={shownPhoto}
-                            skillInput={skillInput}
-                            skillSuggestions={skillSuggestions}
-                            toggleItemEditing={toggleItemEditing}
-                            updateAddressField={updateAddressField}
-                            updateListItemField={updateListItemField}
-                            uploadAttachment={uploadAttachment}
-                            uploadPhoto={uploadPhoto}
-                        />
+                        <>
+                            <ResumeVersions
+                                resumeData={resumeData}
+                                setResumeData={setResumeData}
+                                notify={notify}
+                            />
+
+                            <ProfileSection
+                                addNewItem={addNewItem}
+                                addressCurrEditing={addressCurrEditing}
+                                addressPermEditing={addressPermEditing}
+                                addSkill={addSkill}
+                                avatarContent={avatarContent}
+                                candidateRole={candidateRole}
+                                cleanedResume={cleanedResume}
+                                clearItemDetails={clearItemDetails}
+                                handleSaveResume={handleSaveResume}
+                                isItemEditing={isItemEditing}
+                                personalEditing={personalEditing}
+                                photoBusy={photoBusy}
+                                photoInputRef={photoInputRef}
+                                removeAttachment={removeAttachment}
+                                removeListItem={removeListItem}
+                                removePhoto={removePhoto}
+                                resumeData={resumeData}
+                                resumeTab={resumeTab}
+                                savingResume={savingResume}
+                                setAddressCurrEditing={setAddressCurrEditing}
+                                setAddressPermEditing={setAddressPermEditing}
+                                setPersonalEditing={setPersonalEditing}
+                                setResumeData={setResumeData}
+                                setResumeTab={setResumeTab}
+                                setSkillInput={setSkillInput}
+                                shownPhoto={shownPhoto}
+                                skillInput={skillInput}
+                                skillSuggestions={skillSuggestions}
+                                toggleItemEditing={toggleItemEditing}
+                                updateAddressField={updateAddressField}
+                                updateListItemField={updateListItemField}
+                                uploadAttachment={uploadAttachment}
+                                uploadPhoto={uploadPhoto}
+                            />
+                        </>
 
                     ) : (
 
@@ -2345,6 +2395,58 @@ function Candidate({ onLogout }) {
                     </div>
                 )
             }
+
+            {/* CHOOSE RESUME VERSION BEFORE APPLYING */}
+            {pickJob && (
+                <div className="resume-form-overlay" onClick={() => setPickJob(null)}>
+                    <div className="resume-form-modal" onClick={(e) => e.stopPropagation()}>
+                        <div className="resume-form-head">
+                            <div className="resume-form-head-icon">
+                                <Icon name="send" size={18} />
+                            </div>
+                            <div className="resume-form-head-text">
+                                <span>Apply with</span>
+                                <h3>{pickJob.title} · {pickJob.company}</h3>
+                            </div>
+                            <button type="button" className="resume-form-close" onClick={() => setPickJob(null)}>
+                                <Icon name="close" size={20} />
+                            </button>
+                        </div>
+
+                        <div className="resume-form-body">
+                            <div className="resume-form-field resume-form-field-full">
+                                <label>Choose resume version</label>
+                                <select value={pickedVersion} onChange={(e) => setPickedVersion(e.target.value)}>
+                                    {versions.map((v) => (
+                                        <option key={v.id} value={v.id}>
+                                            {v.title}{v.target_field ? ` (${v.target_field})` : ""}
+                                            {Number(v.is_default) === 1 ? " - default" : ""}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="resume-form-footer">
+                            <button type="button" className="resume-form-cancel" onClick={() => setPickJob(null)}>
+                                Cancel
+                            </button>
+                            <button
+                                type="button"
+                                className="resume-form-save"
+                                onClick={() => {
+                                    const j = pickJob;
+                                    setPickJob(null);
+                                    proceedApply(j, pickedVersion);
+                                }}
+                            >
+                                Continue
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {applyJob && (
                 <div className="resume-form-overlay" onClick={() => setApplyJob(null)}>
                     <div className="resume-form-modal" onClick={(e) => e.stopPropagation()}>
@@ -2416,6 +2518,18 @@ function Candidate({ onLogout }) {
                 </div>
             )}
 
+            {socialModal && (
+                <JobSocialModal
+                    jobId={socialModal.job.id}
+                    title={socialModal.job.title}
+                    initialTab={socialModal.tab}
+                    onClose={() => setSocialModal(null)}
+                    onChange={(c) =>
+                        setCommentCounts((prev) => ({ ...prev, [socialModal.job.id]: c.comments }))
+                    }
+                />
+            )}
+
             {toast && <div className={`app-toast ${toast.type}`}>{toast.message}</div>}
             <style>{`
                 :root {
@@ -2434,47 +2548,46 @@ function Candidate({ onLogout }) {
                 }
 
                 /* ---- Edit / Save / Add buttons ---- */
-                /* Edit button: dark orange, pink, blue gradient */
-.resume-edit-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    border: none;
-    background: linear-gradient(135deg, #f7971e 0%, #ee2a7b 50%, #6228d7 100%);
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 12.5px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    box-shadow: 0 6px 14px rgba(238, 42, 123, 0.35);
-}
-.resume-edit-btn:hover {
-    filter: brightness(1.1);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 18px rgba(98, 40, 215, 0.45);
-}
-                    .resume-delete-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    border: 1.5px solid rgba(239,68,68,0.35);
-    background: rgba(239,68,68,0.08);
-    color: #ef4444;
-    padding: 7px 14px;
-    border-radius: 20px;
-    font-size: 12.5px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-}
-.resume-delete-btn:hover {
-    background: #ef4444;
-    color: #fff;
-}
+                .resume-edit-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    border: none;
+                    background: linear-gradient(135deg, #f7971e 0%, #ee2a7b 50%, #6228d7 100%);
+                    color: #fff;
+                    padding: 8px 16px;
+                    border-radius: 20px;
+                    font-size: 12.5px;
+                    font-weight: 700;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    white-space: nowrap;
+                    box-shadow: 0 6px 14px rgba(238, 42, 123, 0.35);
+                }
+                .resume-edit-btn:hover {
+                    filter: brightness(1.1);
+                    transform: translateY(-1px);
+                    box-shadow: 0 8px 18px rgba(98, 40, 215, 0.45);
+                }
+                .resume-delete-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    border: 1.5px solid rgba(239,68,68,0.35);
+                    background: rgba(239,68,68,0.08);
+                    color: #ef4444;
+                    padding: 7px 14px;
+                    border-radius: 20px;
+                    font-size: 12.5px;
+                    font-weight: 700;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    white-space: nowrap;
+                }
+                .resume-delete-btn:hover {
+                    background: #ef4444;
+                    color: #fff;
+                }
                 .resume-save-btn {
                     display: inline-flex;
                     align-items: center;
@@ -2554,49 +2667,17 @@ function Candidate({ onLogout }) {
                 }
 
                 /* Cards ke andar grid ko poori width do */
-                 .resume-inline-form > .resume-grid-3 {
-                flex: 1 1 100%;
-                width: 100%;
-                min-width: 0;
-                }
-                * ---- Personal Info / Address inline forms ---- */
-                .resume-inline-form {
-                    display: flex;
-                    gap: 24px;
-                    align-items: flex-start;
-                    flex-wrap: wrap;
-                }
-                .resume-inline-photo {
-                    width: 84px;
-                    height: 84px;
-                    min-width: 84px;
-                    border-radius: 18px;
-                    background: var(--insta-gradient);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-weight: 800;
-                    font-size: 24px;
-                    color: #fff;
-                    box-shadow: 0 8px 18px rgba(98,40,215,0.3);
-                }
-                .resume-inline-fields {
-                    flex: 1;
-                    min-width: 240px;
+                .resume-inline-form > .resume-grid-3 {
+                    flex: 1 1 100%;
+                    width: 100%;
+                    min-width: 0;
                 }
 
-                /* Cards ke andar grid ko poori width do */
-                 .resume-inline-form > .resume-grid-3 {
-                flex: 1 1 100%;
-                width: 100%;
-                min-width: 0;
+                /* Projects / Achievements ke edit form ke direct fields bhi full width */
+                .resume-inline-form > .resume-field-group {
+                    flex: 1 1 100%;
+                    width: 100%;
                 }
-
-/* Projects / Achievements ke edit form ke direct fields bhi full width */
-.resume-inline-form > .resume-field-group {
-    flex: 1 1 100%;
-    width: 100%;
-}
                 .resume-grid-3 {
                     display: grid;
                     grid-template-columns: repeat(3, 1fr);
@@ -2756,7 +2837,7 @@ function Candidate({ onLogout }) {
                     display: inline-flex;
                     align-items: center;
                     gap: 5px;
-                    rgba(238,42,123,0.4);
+                    border: 1.5px solid rgba(238,42,123,0.4);
                     background: rgba(238,42,123,0.06);
                     color: #ee2a7b;
                     padding: 6px 12px;
@@ -2964,82 +3045,82 @@ function Candidate({ onLogout }) {
                     transform: translateY(-1px) scale(1.02);
                     box-shadow: 0 10px 24px rgba(98,40,215,0.4);
                 }
-                    .app-toast {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 2000;
-    padding: 12px 20px;
-    border-radius: 12px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
-    animation: toastIn 0.25s ease-out;
-}
-.app-toast.success { background: linear-gradient(135deg, #22c55e, #16a34a); }
-.app-toast.error { background: linear-gradient(135deg, #ef4444, #dc2626); }
-@keyframes toastIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-    .attach-list { display: flex; flex-wrap: wrap; gap: 10px; }
-.attach-empty { font-size: 13px; opacity: 0.55; }
-.attach-chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    border: 1.5px solid rgba(120,120,140,0.25);
-    background: rgba(120,120,140,0.06);
-    border-radius: 12px; padding: 6px 8px; max-width: 220px;
-}
-.attach-chip a { display: inline-flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; min-width: 0; }
-.attach-chip img { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; }
-.attach-pdf {
-    width: 36px; height: 36px; border-radius: 8px; background: #ef4444; color: #fff;
-    display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;
-}
-.attach-name { font-size: 12.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.attach-chip button {
-    border: none; background: rgba(239,68,68,0.12); color: #ef4444;
-    width: 20px; height: 20px; border-radius: 50%; cursor: pointer; font-size: 11px; padding: 0;
-}
-.resume-field-group .attach-add {
-    align-self: flex-start; display: inline-flex; align-items: center;
-    margin-top: 10px; padding: 8px 16px; border-radius: 20px; cursor: pointer;
-    font-size: 12.5px; font-weight: 700; text-transform: none; letter-spacing: 0; opacity: 1;
-    color: #fff; background: linear-gradient(135deg, #f7971e 0%, #ee2a7b 50%, #6228d7 100%);
-}
-    .avatar-img { width:100%; height:100%; object-fit:cover; display:block; border-radius:inherit; }
-.resume-cover-avatar, .large-avatar, .profile-avatar, .resume-inline-photo { overflow:hidden; }
-.photo-col { display:flex; flex-direction:column; align-items:center; gap:8px; }
-.photo-btn {
-    border:1.5px solid #5b3df5; color:#5b3df5; background:transparent; cursor:pointer;
-    border-radius:20px; padding:6px 14px; font:inherit; font-size:12px; font-weight:700;
-}
-.photo-btn:hover { background:rgba(91,61,245,.08); }
-.photo-btn.danger { border-color:rgba(239,68,68,.4); color:#ef4444; }
-.photo-btn:disabled { opacity:.6; cursor:default; }
-.photo-avatar-wrap { position:relative; width:96px; height:96px; }
-.resume-inline-photo.photo-round { width:96px; height:96px; min-width:96px; border-radius:50%; font-size:28px; }
-.photo-camera-btn {
-    position:absolute; right:-2px; bottom:-2px; width:32px; height:32px; padding:0;
-    border-radius:50%; border:3px solid #fff; cursor:pointer; color:#fff;
-    display:flex; align-items:center; justify-content:center;
-    background:linear-gradient(135deg,#f7971e 0%,#ee2a7b 50%,#6228d7 100%);
-    box-shadow:0 4px 10px rgba(98,40,215,.35);
-}
-.candidate-app.dark .photo-camera-btn { border-color:#1c1e2b; }
-.photo-camera-btn:disabled { opacity:.6; cursor:default; }
-.photo-spinner {
-    position:absolute; inset:0; border-radius:50%; background:rgba(0,0,0,.35);
-    display:flex; align-items:center; justify-content:center;
-}
-.photo-spinner::after {
-    content:""; width:26px; height:26px; border-radius:50%;
-    border:3px solid rgba(255,255,255,.5); border-top-color:#fff;
-    animation:photoSpin .7s linear infinite;
-}
-@keyframes photoSpin { to { transform:rotate(360deg); } }
-.photo-hint { font-size:11px; opacity:.6; }
+                .app-toast {
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 2000;
+                    padding: 12px 20px;
+                    border-radius: 12px;
+                    color: #fff;
+                    font-size: 14px;
+                    font-weight: 600;
+                    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+                    animation: toastIn 0.25s ease-out;
+                }
+                .app-toast.success { background: linear-gradient(135deg, #22c55e, #16a34a); }
+                .app-toast.error { background: linear-gradient(135deg, #ef4444, #dc2626); }
+                @keyframes toastIn {
+                    from { opacity: 0; transform: translateY(-10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .attach-list { display: flex; flex-wrap: wrap; gap: 10px; }
+                .attach-empty { font-size: 13px; opacity: 0.55; }
+                .attach-chip {
+                    display: inline-flex; align-items: center; gap: 6px;
+                    border: 1.5px solid rgba(120,120,140,0.25);
+                    background: rgba(120,120,140,0.06);
+                    border-radius: 12px; padding: 6px 8px; max-width: 220px;
+                }
+                .attach-chip a { display: inline-flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; min-width: 0; }
+                .attach-chip img { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; }
+                .attach-pdf {
+                    width: 36px; height: 36px; border-radius: 8px; background: #ef4444; color: #fff;
+                    display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;
+                }
+                .attach-name { font-size: 12.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+                .attach-chip button {
+                    border: none; background: rgba(239,68,68,0.12); color: #ef4444;
+                    width: 20px; height: 20px; border-radius: 50%; cursor: pointer; font-size: 11px; padding: 0;
+                }
+                .resume-field-group .attach-add {
+                    align-self: flex-start; display: inline-flex; align-items: center;
+                    margin-top: 10px; padding: 8px 16px; border-radius: 20px; cursor: pointer;
+                    font-size: 12.5px; font-weight: 700; text-transform: none; letter-spacing: 0; opacity: 1;
+                    color: #fff; background: linear-gradient(135deg, #f7971e 0%, #ee2a7b 50%, #6228d7 100%);
+                }
+                .avatar-img { width:100%; height:100%; object-fit:cover; display:block; border-radius:inherit; }
+                .resume-cover-avatar, .large-avatar, .profile-avatar, .resume-inline-photo { overflow:hidden; }
+                .photo-col { display:flex; flex-direction:column; align-items:center; gap:8px; }
+                .photo-btn {
+                    border:1.5px solid #5b3df5; color:#5b3df5; background:transparent; cursor:pointer;
+                    border-radius:20px; padding:6px 14px; font:inherit; font-size:12px; font-weight:700;
+                }
+                .photo-btn:hover { background:rgba(91,61,245,.08); }
+                .photo-btn.danger { border-color:rgba(239,68,68,.4); color:#ef4444; }
+                .photo-btn:disabled { opacity:.6; cursor:default; }
+                .photo-avatar-wrap { position:relative; width:96px; height:96px; }
+                .resume-inline-photo.photo-round { width:96px; height:96px; min-width:96px; border-radius:50%; font-size:28px; }
+                .photo-camera-btn {
+                    position:absolute; right:-2px; bottom:-2px; width:32px; height:32px; padding:0;
+                    border-radius:50%; border:3px solid #fff; cursor:pointer; color:#fff;
+                    display:flex; align-items:center; justify-content:center;
+                    background:linear-gradient(135deg,#f7971e 0%,#ee2a7b 50%,#6228d7 100%);
+                    box-shadow:0 4px 10px rgba(98,40,215,.35);
+                }
+                .candidate-app.dark .photo-camera-btn { border-color:#1c1e2b; }
+                .photo-camera-btn:disabled { opacity:.6; cursor:default; }
+                .photo-spinner {
+                    position:absolute; inset:0; border-radius:50%; background:rgba(0,0,0,.35);
+                    display:flex; align-items:center; justify-content:center;
+                }
+                .photo-spinner::after {
+                    content:""; width:26px; height:26px; border-radius:50%;
+                    border:3px solid rgba(255,255,255,.5); border-top-color:#fff;
+                    animation:photoSpin .7s linear infinite;
+                }
+                @keyframes photoSpin { to { transform:rotate(360deg); } }
+                .photo-hint { font-size:11px; opacity:.6; }
             `}</style>
 
 
